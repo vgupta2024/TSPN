@@ -1,0 +1,42 @@
+<%- include('../partials/header', {title:"P, R, S: High Scores"}) -%>
+
+<h2>High Scores</h2>
+<table>
+  <tr>
+    <th>
+      User
+    </th>
+    <th>
+      Wins
+    </th>
+    <th>
+      Losses
+    </th>
+    <th>
+      Ties
+    </th>
+    <th>
+      Win %
+    </th>
+  </tr>
+  <%for(let i =0; i<opponents.length; i++){%>
+  <th>
+    <a href="/opponents/<%=opponents[i].name%>"><%=opponents[i].name%></a>
+  </th>
+  <th>
+    <%=opponents[i].win%>
+  </th>
+  <th>
+    <%=opponents[i].lose%>
+  </th>
+  <th>
+    <%=opponents[i].tie%>
+  </th>
+  <th>
+    <%=opponents[i].win_percent%>
+  </th>
+  </tr>
+  <%}%>
+</table>
+
+  <%- include('../partials/footer') -%>

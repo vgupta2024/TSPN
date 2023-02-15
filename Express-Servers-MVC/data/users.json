@@ -1,0 +1,22 @@
+{
+ "mario@gmail.com":{
+   "name": "Mario",
+   "wins": 20,
+   "losses": 10
+ },
+ "luigi@gmail.com":{
+   "name": "Luigi",
+   "wins": 10,
+   "losses": 5
+ },
+ "toad@gmail.com":{
+   "name": "Toad",
+   "wins": 1,
+   "losses": 5
+ },
+ "peach@gmail.com":{
+   "name": "Peach",
+   "wins": 20,
+   "losses": 5
+ }
+}

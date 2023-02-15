@@ -1,0 +1,25 @@
+<%- include('../partials/header', {title:"Play: P, R, S"}) -%>
+
+<p> Choose your opponent and make your thow!
+
+  <form action="/games/:id" method="GET">
+    <img title="" src="" id="opponentImage" />
+    <label for="opponent">Choose an opponent:</label>
+    <select id="opponent" name="opponent">
+      <%for(player in data){%>
+      <option value="<%=player%>"><%=player%></option>
+      <%}%>
+    </select>
+    <br><br>
+    <label for="throw">Choose an throw:</label>
+    <select id="throw" name="throw">
+      <option value="Paper">Paper</option>
+      <option value="Rock">Rock</option>
+      <option value="Scissors">Scissors</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit your Throw!">
+
+  </form>
+
+  <%- include('../partials/footer') -%>
