@@ -4,7 +4,7 @@ const fs = require('fs');
 
 exports.getAllGames =  function() {
   let allGames = JSON.parse(fs.readFileSync(__dirname+'/../data/games.json'));
-  return allGames
+  return allGames;
 }
 
 exports.getSortedGames =  function() {
