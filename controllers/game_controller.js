@@ -42,12 +42,11 @@ router.get('/games/:id', async function(request, response) {
 });
 
 router.get('/games', function(request, response) {
-  let gamesArray = Game.getSortedGames();
-
+  let games = Game.getTeams();
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render("game/recentGames",{
-    games: gamesArray
+    games: games
   });
 });
 

@@ -1,10 +1,15 @@
 const express = require('express'),
   router = express.Router();
 
+const Opponent = require('../models/opponent_model');
+
 router.get('/', function(request, response) {
+  let sports = Opponent.getTeams();
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render("index");
+  response.render("index", {
+  data: sports
+});
 });
 
 router.get('/error', function(request, response) {

@@ -1,0 +1,53 @@
+{
+"Basketball": {
+"Boys": {
+"Wins": 0,
+"Losses": 0,
+"Upcoming Games": "2/20"
+},
+"Girls": {
+"Wins": 0,
+"Losses": 0,
+"Upcoming Games": "2/20"
+}
+},
+
+"Baseball": {
+"Boys": {
+"Wins": 0,
+"Losses": 0,
+"Upcoming Games": "2/20"
+},
+"Girls": {
+"Wins": 0,
+"Losses": 0,
+"Upcoming Games": "2/20"
+}
+},
+
+"Soccer": {
+"Boys": {
+"Wins": 0,
+"Losses": 0,
+"Upcoming Games": "2/20"
+},
+"Girls": {
+"Wins": 0,
+"Losses": 0,
+"Upcoming Games": "2/20"
+}
+},
+
+"Swim": {
+"Boys": {
+"Wins": 0,
+"Losses": 0,
+"Upcoming Games": "2/20"
+},
+"Girls": {
+"Wins": 0,
+"Losses": 0,
+"Upcoming Games": "2/20"
+}
+}
+}

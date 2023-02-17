@@ -1,9 +1,4 @@
-<%- include('../partials/header', {title:"Recent Games: P, R, S"}) -%>
+<%- include('../partials/header', {data:games}) -%>
 
-<ul>
-  <%for (let g =0; g<games.length; g++){%>
-  <li> <a href="/opponent/<%=games[g].opponentName%>"><%=games[g].opponentName%></a> threw <%=games[g].opponentThrow%> vs. <%=games[g].playerThrow%> on <%=(new Date(games[g].date).toLocaleString())%></li>
-  <%}%>
-</ul>
 
 <%- include('../partials/footer') -%>

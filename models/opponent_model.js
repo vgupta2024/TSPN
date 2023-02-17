@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-exports.getOpponents = function(){
-  let opponents = JSON.parse(fs.readFileSync(__dirname+'/../data/opponents.json'));
+exports.getTeams = function(){
+  let opponents = JSON.parse(fs.readFileSync(__dirname+'/../data/sports.json'));
   return opponents;
 }
 
