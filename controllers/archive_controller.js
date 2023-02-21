@@ -2,8 +2,8 @@ const express = require('express'),
   router = express.Router();
 const axios = require('axios');
 
-const Game = require('../models/game_model');
-const Opponent = require('../models/opponent_model');
+const Game = require('../models/archive_model');
+const Opponent = require('../models/stat_model');
 
 router.get('/games/new', function(request, response) {
     let opponents = Opponent.getOpponents();

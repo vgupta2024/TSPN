@@ -13,9 +13,9 @@ app.set('views', __dirname + '/views'); //specify location of templates
 app.set('view engine', 'ejs'); //specify templating library
 
 app.use(require('./controllers/index'));
-app.use(require('./controllers/game_controller'));
-app.use(require('./controllers/user_controller'));
-app.use(require('./controllers/opponent_controller'));
+app.use(require('./controllers/archive_controller'));
+app.use(require('./controllers/sport_controller'));
+app.use(require('./controllers/stat_controller'));
 
 app.use("", function(request, response) {
   response.redirect('/error?code=400');

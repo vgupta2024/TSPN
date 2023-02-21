@@ -1,7 +1,7 @@
 const express = require('express'),
   router = express.Router();
 
-const Opponent = require('../models/opponent_model');
+const Opponent = require('../models/stat_model');
 
 router.get('/', function(request, response) {
   let sports = Opponent.getTeams();
