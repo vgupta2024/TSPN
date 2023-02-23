@@ -5,6 +5,7 @@
 <link rel ="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel ="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
+<% if (user) { %>
 <h1> HIGHLIGHTS </h1>
 <br><br><br><br>
 <h1> UPCOMING GAMES </h1>
@@ -21,6 +22,9 @@
 </div>
 
 <% }} %>
+<%}else{ %>
+  <a href="/login">Click to login</a>
+    <% }%>
 
 </body>
 

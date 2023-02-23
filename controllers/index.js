@@ -9,8 +9,19 @@ router.get('/', function(request, response) {
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render("index", {
-  data: sports
+  data: sports,
+  user: request.user
 });
+});
+router.get('/login', function(request, response) {
+    let sports = Sport.getAllSports();
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html')
+  response.render("login", {
+    user: request.user,
+    data: sports,
+    user: request.user
+  });
 });
 
 router.get('/error', function(request, response) {
@@ -28,6 +39,7 @@ router.get('/error', function(request, response) {
   response.setHeader('Content-Type', 'text/html')
   response.render("error", {
     data: sports,
+    user: request.user,
     "errorCode": errorCode,
     "details": errors[errorCode]
   });
