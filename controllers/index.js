@@ -1,10 +1,11 @@
 const express = require('express'),
   router = express.Router();
 
-const Opponent = require('../models/stat_model');
+const Stat = require('../models/stat_model');
+const Sport = require('../models/sport_model')
 
 router.get('/', function(request, response) {
-  let sports = Opponent.getTeams();
+  let sports = Sport.getAllSports();
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render("index", {
