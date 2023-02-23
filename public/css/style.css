@@ -1,23 +1,23 @@
 body {
-  background-color: #ffffff;
+  background-color: #ECECEC;
   font-size: 18px;
   color: #000080;
   font-family: 'Raleway', sans-serif;
 }
 
 h1 {
-  background-color: #00ffdd;
+  background-color: #E2EEEE;
   font-size: 40px;
   text-align: center;
 }
 
 div {
-  border-radius: 25px;
+  border-radius: 10px;
   margin-top: 50px;
   margin-bottom: 50px;
   margin-right: 50px;
   margin-left: 50px;
-  background-color: #66ffff;
+  background-color: #FDDC5C;
   overflow: auto;
   padding: 15px;
 }
@@ -52,7 +52,7 @@ table, th, td {
 }
 
 tr:hover {
-  background-color: #ccfff8;
+  background-color: #E2EEEE;
 }
 
 a {
@@ -70,6 +70,8 @@ img {
 }
 
 footer {
+  padding: 3px;
+  background-color: #FDDC5C;
   font-size: 50%;
   text-align: center;
 }
