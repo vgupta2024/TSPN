@@ -1,24 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:gold;" >
     <a class="navbar-nav" href="/">
       <img href="/" src="/images/TSPN.png" width="120" height="50" alt="">
     </a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/Category/archives" > Archives </a>
+        <a class="nav-link" style="color:blue;" href="/Category/archives" > Archives </a>
           </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" style="color:blue;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Sports
         </a>
         <ul class="dropdown-menu">
         <% for(let sport in data){ %>
-          <li><a class="dropdown-item" href= "/Category/<%=sport%>"><%=sport%></a></li>
+          <li><a class="dropdown-item" style="color:blue;" href= "/Category/<%=sport%>"><%=sport%></a></li>
           <%}%>
         </ul>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" style="color:blue;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Timeframe
         </a>
         <ul class="dropdown-menu">
