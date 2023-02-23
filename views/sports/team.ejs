@@ -1,6 +1,7 @@
 <%- include('../partials/header', {title:"TSPN"}, {data:data}) -%>
 
 <h2>Trinity <%=sport%> Team!</h2>
-
-
+<% for (gender in data[sport]) { %>
+<h3> <%=gender%>' Record: <%=data[sport][gender]["Wins"]%> - <%=data[sport][gender]["Losses"]%> </h3>
+<%}%>
 <%- include('../partials/footer') -%>
