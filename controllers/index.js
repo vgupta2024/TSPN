@@ -10,6 +10,12 @@ router.get('/', function(request, response) {
   response.render("index", {
   data: sports
 });
+ for (sport in sports) {
+   for (gender in sports[sport]) {
+
+ for (upcomingGame in sports[sport][gender]["UpcomingGames"]) {
+console.log(upcomingGame);
+}}}
 });
 
 router.get('/error', function(request, response) {
