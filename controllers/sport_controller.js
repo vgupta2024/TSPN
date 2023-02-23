@@ -20,3 +20,16 @@ router.get('/users2', function(request, response) {
    });
 
 });
+
+router.get('/Category/:sport', function(request, response) {
+    let sport = request.params.sport;
+    let sports = User.getAllSports();
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("sports/opponentCreate", {
+      data: sports,
+      sport: sport
+
+    });
+    console.log(sport);
+});
