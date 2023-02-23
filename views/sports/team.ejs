@@ -1,7 +1,23 @@
 <%- include('../partials/header', {title:"TSPN"}, {data:data}) -%>
 
 <h2>Trinity <%=sport%> Team!</h2>
+<br><br><br>
+<h3> Highlights: </h3>
+<br><br><br>
+<h3> Upcoming Games: </h3>
+  <% for (gender in data[sport]) { %>
+
+<div class="card bg-primary mb-3 border-primary mb-3" style="width: 100rem; height: 20rem;">
+<div class="card-body">
+<h5 class="card-title"><%=gender%>' <%=sport%>: <%=data[sport][gender]["UpcomingGames"]%></h5>
+<p class="card-text">Some information regarding the game.</p>
+</div>
+</div>
+
+<% } %>
+<br><br><br>
 <% for (gender in data[sport]) { %>
 <h3> <%=gender%>' Record: <%=data[sport][gender]["Wins"]%> - <%=data[sport][gender]["Losses"]%> </h3>
 <%}%>
+<br><br><br>
 <%- include('../partials/footer') -%>
