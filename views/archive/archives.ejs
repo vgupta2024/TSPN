@@ -1,14 +1,14 @@
-<%- include('../partials/header', {title:"Play: P, R, S"}) -%>
+<%- include('../partials/header', {title:"TSPN"}, {data:data}) -%>
 
 <h1> Trinity Team Archives! </h1>
 
 <body>
-  <% for (sport in data) { %>
-    <% for (gender in data[sport]) { %>
+  <% for (sport in archives) { %>
+    <% for (gender in archives[sport]) { %>
 
 <div class="card" style="width: 100rem;">
 <div class="card-body">
-  <h5 class="card-title"><%=gender%>' <%=sport%> Past Championships: <%=data[sport][gender]["Championships"]%></h5>
+  <h5 class="card-title"><%=gender%>' <%=sport%> Past Championships: <%=archives[sport][gender]["Championships"]%></h5>
 </div>
 </div>
 

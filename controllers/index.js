@@ -11,16 +11,11 @@ router.get('/', function(request, response) {
   response.render("index", {
   data: sports
 });
- for (sport in sports) {
-   for (gender in sports[sport]) {
-
- for (upcomingGame in sports[sport][gender]["UpcomingGames"]) {
-console.log(upcomingGame);
-}}}
 });
 
 router.get('/error', function(request, response) {
   const errorCode = request.query.code;
+  let sports = Sport.getAllSports();
   if (!errorCode) errorCode = 400;
   const errors = {
     '400': "Unknown Client Error",
@@ -32,6 +27,7 @@ router.get('/error', function(request, response) {
   response.status(errorCode);
   response.setHeader('Content-Type', 'text/html')
   response.render("error", {
+    data: sports,
     "errorCode": errorCode,
     "details": errors[errorCode]
   });
