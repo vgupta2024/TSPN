@@ -16,7 +16,7 @@
   <% for (sport in data) { %>
     <% for (gender in data[sport]) { %>
 
-<div class="card" style="width: 100rem;">
+<div class="card bg-primary mb-3 border-primary mb-3" style="width: 100rem;">
 <div class="card-body">
   <h5 class="card-title"><%=gender%>' <%=sport%>: <%=data[sport][gender]["UpcomingGames"]%></h5>
   <p class="card-text">Some information regarding the game.</p>
@@ -27,7 +27,7 @@
 
 </body>
 
-  
+
 
 
 
