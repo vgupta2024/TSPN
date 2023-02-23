@@ -30,6 +30,9 @@
 </ul>
     </li>
     </ul>
+    <%if(user){%>
+    <small>Logged in as <%=user._json.email%></small>
+    <%}%>
   </div>
 </nav>
 

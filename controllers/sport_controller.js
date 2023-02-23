@@ -28,7 +28,8 @@ router.get('/Category/:sport', function(request, response) {
     response.setHeader('Content-Type', 'text/html')
     response.render("sports/team", {
       data: sports,
-      sport: sport
+      sport: sport,
+      user: request.user
 
     });
     console.log(sport);
