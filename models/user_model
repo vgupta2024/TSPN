@@ -14,7 +14,7 @@ exports.isUser = function(userID){
 exports.makeAdmin = function(userID){
   let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
   if(users[userID] && users[userID]["privileges"].indexOf("admin")<0) users[userID]["privileges"].push("admin");
-  fs.writeFileSync(__dirname+'/../data/users.json', JSON.stringify(allusers));
+  fs.writeFileSync(__dirname+'/../data/users.json', JSON.stringify(users));
 }
 
 exports.isAdmin = function(userID){
