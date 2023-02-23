@@ -1,0 +1,37 @@
+{
+"Basketball": {
+"Boys": {
+"Championships": 2
+},
+"Girls": {
+"Championships": 2
+}
+},
+
+"Baseball": {
+"Boys": {
+"Championships": 3
+},
+"Girls": {
+"Championships": 5
+}
+},
+
+"Soccer": {
+"Boys": {
+"Championships": 7
+},
+"Girls": {
+"Championships": 1
+}
+},
+
+"Swim": {
+"Boys": {
+"Championships": 1
+},
+"Girls": {
+"Championships": 1
+}
+}
+}

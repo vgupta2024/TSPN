@@ -26,7 +26,7 @@ router.get('/Category/:sport', function(request, response) {
     let sports = User.getAllSports();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render("sports/opponentCreate", {
+    response.render("sports/team", {
       data: sports,
       sport: sport
 
