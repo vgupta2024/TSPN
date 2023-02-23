@@ -17,6 +17,7 @@ app.use(require('./controllers/archive_controller'));
 app.use(require('./controllers/sport_controller'));
 app.use(require('./controllers/stat_controller'));
 
+
 app.use("", function(request, response) {
   response.redirect('/error?code=400');
 });
