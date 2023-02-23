@@ -18,6 +18,7 @@ div {
   margin-right: 50px;
   margin-left: 50px;
   background-color: #FDDC5C;
+  text-color: #000080;
   overflow: auto;
   padding: 15px;
 }
