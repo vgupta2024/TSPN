@@ -22,7 +22,7 @@ router.get('/users2', function(request, response) {
 
 });
 
-router.get('/Category/upload', function(request, response) {
+router.get('/Category/uploadText', function(request, response) {
     let sports = Sport.getAllSports();
       let userData = User.getUsers();
     response.status(200);
@@ -38,7 +38,7 @@ router.get('/Category/upload', function(request, response) {
   }
 });
 
-router.post('/Category/upload', function(request, response) {
+router.post('/Category/uploadText', function(request, response) {
         let date = request.body.game;
         let info = request.body.information;
         let sports = Sport.getAllSports();
