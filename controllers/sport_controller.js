@@ -22,12 +22,25 @@ router.get('/users2', function(request, response) {
 
 });
 
+router.get('/Category/uploadHighlights', function(request, response) {
+    let sports = Sport.getAllSports();
+      let userData = User.getUsers();
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("sports/uploadHighlights", {
+      data: sports,
+      user: request.user,
+      userData: userData
+
+    });
+});
+
 router.get('/Category/uploadText', function(request, response) {
     let sports = Sport.getAllSports();
       let userData = User.getUsers();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render("sports/upload", {
+    response.render("sports/uploadText", {
       data: sports,
       user: request.user,
       userData: userData
