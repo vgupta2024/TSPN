@@ -21,6 +21,20 @@ router.get('/users2', function(request, response) {
 
 });
 
+router.get('/Category/upload', function(request, response) {
+    let sports = Sport.getAllSports();
+      let userData = User.getUsers();
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("sports/upload", {
+      data: sports,
+      user: request.user,
+      userData: userData
+
+    });
+    console.log(sport);
+});
+
 router.get('/Category/:sport', function(request, response) {
     let sport = request.params.sport;
       let userData = User.getUsers();
@@ -32,21 +46,6 @@ router.get('/Category/:sport', function(request, response) {
       sport: sport,
       user: request.user,
         userData: userData
-
-    });
-    console.log(sport);
-});
-
-router.get('/Category/upload', function(request, response) {
-    let sports = Sport.getAllSports();
-      let userData = User.getUsers();
-    response.status(200);
-    response.setHeader('Content-Type', 'text/html')
-    response.render("sports/team", {
-      data: sports,
-      sport: sport,
-      user: request.user,
-      userData: userData
 
     });
     console.log(sport);

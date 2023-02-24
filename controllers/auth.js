@@ -60,7 +60,7 @@ router.get('/auth/google/callback',
     console.log("PROFILE:" + userProfile);
     let userID = request.user._json.email;
     User.createUser(userID, userID.split('@')[0]);
-    User.makeAdmin("jtrac52@gmail.com");
+    User.makeAdmin("james.tractenberg23@trinityschoolnyc.org");
     response.redirect('/');
   });
 

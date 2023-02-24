@@ -1,0 +1,7 @@
+<%- include('../partials/header', {title:"TSPN"}, {data:data}, {userData: userData} ) -%>
+
+<% if (user) { %>
+<h2>Welcome, <%=user._json.email.split("@")[0]%>!</h2>
+
+<% } %>
+<%- include('../partials/footer') -%>

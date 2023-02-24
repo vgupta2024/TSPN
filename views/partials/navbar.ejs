@@ -29,11 +29,12 @@
                  min="2023-01-01" max="2023-12-31">
 </ul>
     </li>
-        <%  if (userData[user._json.email]["privileges"].includes('admin')) { %>
+    <% if (user) { %>
+      <%  if (userData[user._json.email]["privileges"].includes('admin')) { %>
     <li class="nav-item">
       <a class="nav-link" style="color:blue;" href="/Category/upload" > Upload </a>
         </li>
-        <% }%>
+        <% }}%>
     </ul>
     <%if(user){%>
     <small>Logged in as <%=user._json.email%></small>
