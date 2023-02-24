@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const multer = require('multer');
   router = express.Router();
 
 const Sport = require('../models/sport_model');
@@ -20,6 +21,30 @@ router.get('/users2', function(request, response) {
      response.send(userData);
    });
 
+});
+
+let publicStorage = multer.diskStorage ({
+destination: function (req, file, cb) {
+cb(null,'./public/videos');
+},
+filename: function (req, file, cb) {
+console.log(file);
+cb(null, Date.now()+'-'+file.originalname.replace(' ', '-'));
+}
+});
+
+let publicUpload = multer({ storage: publicStorage });
+
+router.post('/Category/uploadHighlights', publicUpload.single('myFile'), (req, res, next) => {
+  const file = req.file;
+  if (!file) {
+  const error = {
+  'httpStatusCode': 400,
+  'message': 'Please upload a file'
+  }
+  res.send (error);
+  }
+  res.redirect("/");
 });
 
 router.get('/Category/uploadHighlights', function(request, response) {
