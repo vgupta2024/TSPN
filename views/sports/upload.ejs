@@ -3,5 +3,20 @@
 <% if (user) { %>
 <h2>Welcome, <%=user._json.email.split("@")[0]%>!</h2>
 
+<form action="/Category/upload" method="POST">
+  <label for="upcominggames"> Which Upcoming Game?:</label>
+  <select id="game" name="game">
+    <% for (let i = 0; i < data["Basketball"]["Boys"]["UpcomingGames"].length; i++) { %>
+    <option value="<%=data["Basketball"]["Boys"]["UpcomingGames"][i]%>"><%=data["Basketball"]["Boys"]["UpcomingGames"][i]%></option>
+    <%}%>
+    </select>
+    <br><br><br>
+  <label for="Game Information"> Game Information:</label>
+  <input class="lead" type="text" id="information" name="information" value="">
+  <br><br>
+  <input class="lead" type="submit" value="Upload Game Information!">
+
+</form>
+
 <% } %>
 <%- include('../partials/footer') -%>

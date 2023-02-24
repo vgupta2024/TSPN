@@ -1,4 +1,5 @@
-const express = require('express'),
+const express = require('express');
+const fs = require('fs');
   router = express.Router();
 
 const Sport = require('../models/sport_model');
@@ -32,7 +33,23 @@ router.get('/Category/upload', function(request, response) {
       userData: userData
 
     });
-    console.log(sport);
+    for (let games in sports["Basketball"]["Boys"]["UpcomingGames"]) {
+    console.log(games);
+  }
+});
+
+router.post('/Category/upload', function(request, response) {
+        let date = request.body.game;
+        let info = request.body.information;
+        let sports = Sport.getAllSports();
+        let index = sports["Basketball"]["Boys"]["UpcomingGames"].indexOf(date);
+          console.log("HERE:" + date);
+        sports["Basketball"]["Boys"]["GameInfo"][index] = info;
+
+          fs.writeFileSync('data/sports.json', JSON.stringify(sports));
+          response.redirect("/");
+
+
 });
 
 router.get('/Category/:sport', function(request, response) {

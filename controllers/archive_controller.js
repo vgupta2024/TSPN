@@ -1,5 +1,5 @@
 const express = require('express'),
-  router = express.Router();
+router = express.Router();
 const axios = require('axios');
 
 const Sport = require('../models/sport_model');
