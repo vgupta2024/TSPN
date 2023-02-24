@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-exports.getusers = function(){
+exports.getUsers = function(){
   let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
   return users;
 }

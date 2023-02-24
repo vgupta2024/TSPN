@@ -3,29 +3,34 @@ const express = require('express'),
 
 const Stat = require('../models/stat_model');
 const Sport = require('../models/sport_model')
+const User = require('../models/user_model')
 
 router.get('/', function(request, response) {
   let sports = Sport.getAllSports();
+    let userData = User.getUsers();
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render("index", {
   data: sports,
-  user: request.user
+  user: request.user,
+  userData: userData
 });
 });
 router.get('/login', function(request, response) {
     let sports = Sport.getAllSports();
+      let userData = User.getUsers();
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render("login", {
     user: request.user,
     data: sports,
-    user: request.user
+    userData: userData
   });
 });
 
 router.get('/error', function(request, response) {
   const errorCode = request.query.code;
+    let userData = User.getUsers();
   let sports = Sport.getAllSports();
   if (!errorCode) errorCode = 400;
   const errors = {
@@ -41,7 +46,8 @@ router.get('/error', function(request, response) {
     data: sports,
     user: request.user,
     "errorCode": errorCode,
-    "details": errors[errorCode]
+    "details": errors[errorCode],
+      userData: userData
   });
 });
 
