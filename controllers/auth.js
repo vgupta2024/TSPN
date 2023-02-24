@@ -61,6 +61,7 @@ router.get('/auth/google/callback',
     let userID = request.user._json.email;
     User.createUser(userID, userID.split('@')[0]);
     User.makeAdmin("james.tractenberg23@trinityschoolnyc.org");
+    User.makeAdmin("varun.gupta24@trinityschoolnyc.org");
     response.redirect('/');
   });
 
