@@ -3,7 +3,7 @@
 <% if (user) { %>
 <h2>Welcome, <%=user._json.email.split("@")[0]%>!</h2>
 
-<form action="/Category/uploadHighlights" enctype="multipart/form-data" method="POST">
+<form action="/sport/uploadHighlights" enctype="multipart/form-data" method="POST">
    <input type="file" name="myFile" />
    <br>
    <input type="submit" value="Upload a file" required/>
