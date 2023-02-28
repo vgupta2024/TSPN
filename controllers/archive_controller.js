@@ -7,7 +7,7 @@ const Archive = require('../models/archive_model');
 const Stat = require('../models/stat_model');
 const User = require('../models/user_model');
 
-router.get('/Category/archives', function(request, response) {
+router.get('/archives', function(request, response) {
     let archives = Archive.getAllArchives();
     let data = Sport.getAllSports();
       let userData = User.getUsers();
