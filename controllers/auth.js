@@ -66,10 +66,11 @@ router.get('/auth/google/callback',
   });
 
 router.get("/auth/logout", (request, response) => {
-  request.logout();
-  let userID = request.user._json.email;
-  User.createUser(userID, userID.split('.')[0]);//only creates if not in users.json
+  request.logout(function(err) {
+      if (err) { return next(err); }
   response.redirect('/');
 });
+});
+
 
 module.exports = router;
