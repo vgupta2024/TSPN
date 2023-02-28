@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const multer = require('multer');
   router = express.Router();
 
 const Sport = require('../models/sport_model');
