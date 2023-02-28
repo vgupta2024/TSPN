@@ -14,6 +14,31 @@ router.get('/users', function(request, response) {
 module.exports = router;
 
 
+
+let publicStorage = multer.diskStorage ({
+destination: function (req, file, cb) {
+cb(null,'./public/videos');
+},
+filename: function (req, file, cb) {
+console.log(file);
+cb(null, Date.now()+'-'+file.originalname.replace(' ', '-'));
+}
+});
+
+let publicUpload = multer({ storage: publicStorage });
+
+router.post('/sport/uploadHighlights', publicUpload.single('myFile'), (req, res, next) => {
+  const file = req.file;
+  if (!file) {
+  const error = {
+  'httpStatusCode': 400,
+  'message': 'Please upload a file'
+  }
+  res.send (error);
+  }
+  res.redirect("/");
+});
+
 router.get('/sport/uploadHighlights', function(request, response) {
     let sports = Sport.getAllSports();
       let userData = User.getUsers();
@@ -45,6 +70,20 @@ router.get('/sport/uploadText', function(request, response) {
 
 router.post('/sport/uploadText', function(request, response) {
         let date = request.body.game;
+        let info = request.body.information;
+        let sports = Sport.getAllSports();
+        let index = sports["Basketball"]["Boys"]["UpcomingGames"].indexOf(date);
+          console.log("HERE:" + date);
+        sports["Basketball"]["Boys"]["GameInfo"][index] = info;
+
+          fs.writeFileSync('data/sports.json', JSON.stringify(sports));
+          response.redirect("/");
+
+
+});
+
+router.post('/sport/uploadText', function(request, response) {
+        let date = request.body.myFile;
         let info = request.body.information;
         let sports = Sport.getAllSports();
         let index = sports["Basketball"]["Boys"]["UpcomingGames"].indexOf(date);
