@@ -19,3 +19,17 @@ exports.getAllSports=  function() {
   let allSports = JSON.parse(fs.readFileSync(__dirname+'/../data/sports.json'));
   return allSports;
 }
+
+exports.getAllVideos=  function() {
+  let allVideos = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
+  return allVideos;
+}
+
+exports.getVideoNum=  function() {
+  let allVideos = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
+  let counter = 0;
+  for (video in allVideos){
+    counter ++;
+  }
+  return counter;
+}
