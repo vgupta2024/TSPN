@@ -20,7 +20,6 @@ destination: function (req, file, cb) {
 cb(null,'./public/videos');
 },
 filename: function (req, file, cb) {
-console.log(file);
 cb(null, Date.now()+'-'+file.originalname.replace(' ', '-'));
 }
 });
@@ -29,6 +28,17 @@ let publicUpload = multer({ storage: publicStorage });
 
 router.post('/sport/uploadHighlights', publicUpload.single('myFile'), (req, res, next) => {
   const file = req.file;
+  let videoNum = Sport.getVideoNum();
+  if(videoNum == 'NaN'){
+    videoNum = 0;
+  }
+  if(videoNum == 'undefined'){
+    videoNum = 0;
+  }
+  console.log(videoNum);
+  let videos = Sport.getAllVideos();
+  videos[videoNum] = file;
+  fs.writeFileSync('data/videoNames.json', JSON.stringify(videos));
   if (!file) {
   const error = {
   'httpStatusCode': 400,

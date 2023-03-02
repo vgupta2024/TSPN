@@ -1,5 +1,6 @@
 const express = require('express'),
   router = express.Router();
+const fs = require('fs');
 
 const Stat = require('../models/stat_model');
 const Sport = require('../models/sport_model')
@@ -8,12 +9,14 @@ const User = require('../models/user_model')
 router.get('/', function(request, response) {
   let sports = Sport.getAllSports();
     let userData = User.getUsers();
+    let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render("index", {
   data: sports,
   user: request.user,
-  userData: userData
+  userData: userData,
+  videoNames: videoNames
 });
 });
 router.get('/login', function(request, response) {

@@ -9,9 +9,11 @@
 
 <% if (user) { %>
 <h1> HIGHLIGHTS </h1>
+<% for (video in videoNames) { %>
 <video width="320" height="300" controls>
-  <source src="videos/1677359778374-2016-04-11-18-50-18.mp4" type="video/mp4">
+  <source src= "/videos/"+<%=video['filename']%> type="video/mp4">
 </video>
+<% } %>
 <br><br><br><br>
 <h1> UPCOMING GAMES </h1>
 <br><br><br><br>
