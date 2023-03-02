@@ -28,6 +28,7 @@ let publicUpload = multer({ storage: publicStorage });
 
 router.post('/sport/uploadHighlights', publicUpload.single('myFile'), (req, res, next) => {
   const file = req.file;
+  let sport = req.body.sport;
   let videoNum = Sport.getVideoNum();
   if(videoNum == 'NaN'){
     videoNum = 0;
@@ -38,6 +39,7 @@ router.post('/sport/uploadHighlights', publicUpload.single('myFile'), (req, res,
   console.log(videoNum);
   let videos = Sport.getAllVideos();
   videos[videoNum] = file;
+  videos[videoNum]['sport'] = sport;
   fs.writeFileSync('data/videoNames.json', JSON.stringify(videos));
   if (!file) {
   const error = {
@@ -110,13 +112,15 @@ router.get('/sport/:sport', function(request, response) {
     let sport = request.params.sport;
       let userData = User.getUsers();
     let sports = Sport.getAllSports();
+    let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("sports/team", {
       data: sports,
       sport: sport,
       user: request.user,
-        userData: userData
+        userData: userData,
+        videoNames: videoNames
 
     });
     console.log(sport);

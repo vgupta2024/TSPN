@@ -3,6 +3,12 @@
 <h2>Trinity <%=sport%> Team!</h2>
 <br><br><br>
 <h3> Highlights: </h3>
+<% for (video in videoNames) { %>
+  <% if(videoNames[video]['sport'] == sport) {%>
+<video width="320" height="300" controls>
+  <source src= "/videos/<%=videoNames[video]['filename']%>" type="video/mp4">
+</video>
+<% }} %>
 <br><br><br>
 <h3> Upcoming Games: </h3>
   <% for (gender in data[sport]) { %>

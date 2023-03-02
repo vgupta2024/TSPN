@@ -3,7 +3,14 @@
 <% if (user) { %>
 <h2>Welcome, <%=user._json.email.split("@")[0]%>!</h2>
 
+
 <form action="/sport/uploadHighlights" enctype="multipart/form-data" method="POST">
+  <label for="upcominggames"> Which Sport?:</label>
+  <select id="sport" name="sport">
+    <% for(let sport in data){ %>
+      <option value="<%=sport%>"><%=sport%></option>
+      <%}%>
+    </select>
    <input type="file" name="myFile" />
    <br>
    <input type="submit" value="Upload a file" required/>
