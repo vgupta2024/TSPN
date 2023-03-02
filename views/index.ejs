@@ -11,7 +11,7 @@
 <h1> HIGHLIGHTS </h1>
 <% for (video in videoNames) { %>
 <video width="320" height="300" controls>
-  <source src= "/videos/"+<%=video['filename']%> type="video/mp4">
+  <source src= "/videos/<%=videoNames[video]['filename']%>" type="video/mp4">
 </video>
 <% } %>
 <br><br><br><br>
