@@ -29,6 +29,7 @@ let publicUpload = multer({ storage: publicStorage });
 router.post('/sport/uploadHighlights', publicUpload.single('myFile'), (req, res, next) => {
   const file = req.file;
   let sport = req.body.sport;
+  if((file['filename'].split(".")[1]=="mov")||(file['filename'].split(".")[1]=="mp4")){
   let videoNum = Sport.getVideoNum();
   if(videoNum == 'NaN'){
     videoNum = 0;
@@ -41,14 +42,16 @@ router.post('/sport/uploadHighlights', publicUpload.single('myFile'), (req, res,
   videos[videoNum] = file;
   videos[videoNum]['sport'] = sport;
   fs.writeFileSync('data/videoNames.json', JSON.stringify(videos));
+  res.redirect("/");
+}else{
   if (!file) {
   const error = {
   'httpStatusCode': 400,
-  'message': 'Please upload a file'
+  'message': 'Please upload a file with a supported video type (.mov or .mp4)'
   }
   res.send (error);
   }
-  res.redirect("/");
+}
 });
 
 router.get('/sport/uploadHighlights', function(request, response) {
