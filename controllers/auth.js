@@ -1,5 +1,6 @@
 const express = require('express'),
   router = express.Router();
+  const fs = require('fs');
 const session = require('express-session');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -59,9 +60,15 @@ router.get('/auth/google/callback',
   function(request, response) {
     console.log("PROFILE:" + userProfile);
     let userID = request.user._json.email;
+    let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/userAuthority.json'));
     User.createUser(userID, userID.split('@')[0]);
-    User.makeAdmin("james.tractenberg23@trinityschoolnyc.org");
-    User.makeAdmin("varun.gupta24@trinityschoolnyc.org");
+    for (users in userAuthority) {
+    if (userID == users) {
+    if (userAuthority[users]['authority'] == 'Admin') {
+    User.makeAdmin(userID);
+    }
+    }
+    }
     response.redirect('/');
   });
 
