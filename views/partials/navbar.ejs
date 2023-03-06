@@ -41,6 +41,13 @@
           </ul>
         </li>
         <% }}%>
+
+    <% if (user) { %>
+      <%  if (userData[user._json.email]["privileges"].includes('admin')) { %>
+        <li class="nav-item">
+          <a class="nav-link" style="color:blue;" href="/privileges" > Change User Privileges </a>
+            </li>
+          <% }}%>
     </ul>
     <%if(user){%>
     <small>Logged in as <%=user._json.email%></small>

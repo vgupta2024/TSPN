@@ -1,1 +1,29 @@
-{"jtrac52@gmail.com":{"displayName":"jtrac52","win":0,"lose":0,"tie":0,"privileges":["user","admin"],"games":[],"dateJoined":"2023-02-24T02:09:39.228Z"},"james.tractenberg23@trinityschoolnyc.org":{"displayName":"james.tractenberg23","win":0,"lose":0,"tie":0,"privileges":["user","admin"],"games":[],"dateJoined":"2023-02-24T03:58:30.184Z"},"varun.gupta24@trinityschoolnyc.org":{"displayName":"varun.gupta24","win":0,"lose":0,"tie":0,"privileges":["user","admin"],"games":[],"dateJoined":"2023-02-24T14:33:55.119Z"}}
+{
+  "jtrac52@gmail.com": {
+    "displayName": "jtrac52",
+    "win": 0,
+    "lose": 0,
+    "tie": 0,
+    "privileges": ["user"],
+    "games": [],
+    "dateJoined": "2023-02-24T02:09:39.228Z"
+  },
+  "james.tractenberg23@trinityschoolnyc.org": {
+    "displayName": "james.tractenberg23",
+    "win": 0,
+    "lose": 0,
+    "tie": 0,
+    "privileges": ["user", "admin"],
+    "games": [],
+    "dateJoined": "2023-02-24T03:58:30.184Z"
+  },
+  "varun.gupta24@trinityschoolnyc.org": {
+    "displayName": "varun.gupta24",
+    "win": 0,
+    "lose": 0,
+    "tie": 0,
+    "privileges": ["user", "admin"],
+    "games": [],
+    "dateJoined": "2023-02-24T14:33:55.119Z"
+  }
+}

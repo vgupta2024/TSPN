@@ -16,6 +16,14 @@ exports.makeAdmin = function(userID){
   if(users[userID] && users[userID]["privileges"].indexOf("admin")<0) users[userID]["privileges"].push("admin");
   fs.writeFileSync(__dirname+'/../data/users.json', JSON.stringify(users));
 }
+exports.makeCaptain = function(userID){
+  let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
+  let sports = JSON.parse(fs.readFileSync(__dirname+'/../data/sports.json'));
+  for (sport in sports) {
+  if(users[userID] && users[userID]["privileges"].indexOf(sport + " Captain")<0) users[userID]["privileges"].push(sport + " Captain");
+}
+  fs.writeFileSync(__dirname+'/../data/users.json', JSON.stringify(users));
+}
 
 exports.isAdmin = function(userID){
   let users = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));

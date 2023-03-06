@@ -10,6 +10,7 @@ const KEYS = require('../config/keys.json');
 
 let userProfile; //only used if you want to see user info beyond username
 
+const Sport = require('../models/sport_model');
 const User = require('../models/user_model');
 
 router.use(session({
@@ -50,6 +51,8 @@ router.get('/auth/google',
     scope: ['email']
   }));
 
+
+
 /*
   This callback is invoked after Google decides on the login results
 */
@@ -60,15 +63,27 @@ router.get('/auth/google/callback',
   function(request, response) {
     console.log("PROFILE:" + userProfile);
     let userID = request.user._json.email;
+    let sports = Sport.getAllSports();
     let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/userAuthority.json'));
     User.createUser(userID, userID.split('@')[0]);
     for (users in userAuthority) {
+
     if (userID == users) {
+console.log(users);
     if (userAuthority[users]['authority'] == 'Admin') {
     User.makeAdmin(userID);
     }
+
+console.log()
+for (sport in sports) {
+  console.log(sport + " Captain")
+    if (userAuthority[users]['authority'] == sport + " Captain") {
+    User.makeCaptain(userID);
+    }
+
     }
     }
+  }
     response.redirect('/');
   });
 
