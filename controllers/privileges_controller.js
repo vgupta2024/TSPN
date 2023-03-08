@@ -11,18 +11,19 @@ const User = require('../models/user_model');
 router.post('/privileges', function(request, response) {
         let userEmail = request.body.userEmail;
         let privilege = request.body.privileges;
-        let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/userAuthority.json'));
+        let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
         for (users in userAuthority) {
         if (userEmail != users) {
         userAuthority[userEmail] =
         {
-          "authority": privilege
+          "displayName": userEmail.split("@")[0],
+          "privileges": ["user", privilege]
         };
       } else {
-      userAuthority[users]["authority"] = privilege;
+      userAuthority[users]["privileges"] = ["user", privilege];
       }
         }
-          fs.writeFileSync('data/userAuthority.json', JSON.stringify(userAuthority));
+          fs.writeFileSync('data/users.json', JSON.stringify(userAuthority));
           response.redirect("/");
 
 
@@ -31,7 +32,7 @@ router.post('/privileges', function(request, response) {
 router.get('/privileges', function(request, response) {
     let data = Sport.getAllSports();
     let userData = User.getUsers();
-    let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/userAuthority.json'));
+    let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("privileges/privileges", {

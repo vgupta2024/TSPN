@@ -45,12 +45,7 @@ exports.createUser =  function (userID, userDisplayName){
   if(!allusers[userID]){
     let newUser={
       "displayName": userDisplayName,
-      "win": 0,
-      "lose": 0,
-      "tie": 0,
-      "privileges": ["user"],
-      "games": [],
-      "dateJoined": new Date()
+      "privileges": ["user"]
     }
     allusers[userID] = newUser;
     fs.writeFileSync(__dirname+'/../data/users.json', JSON.stringify(allusers));

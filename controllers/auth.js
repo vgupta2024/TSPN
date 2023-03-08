@@ -64,25 +64,10 @@ router.get('/auth/google/callback',
     console.log("PROFILE:" + userProfile);
     let userID = request.user._json.email;
     let sports = Sport.getAllSports();
-    let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/userAuthority.json'));
+    let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
     User.createUser(userID, userID.split('@')[0]);
     for (users in userAuthority) {
 
-    if (userID == users) {
-console.log(users);
-    if (userAuthority[users]['authority'] == 'Admin') {
-    User.makeAdmin(userID);
-    }
-
-console.log()
-for (sport in sports) {
-  console.log(sport + " Captain")
-    if (userAuthority[users]['authority'] == sport + " Captain") {
-    User.makeCaptain(userID);
-    }
-
-    }
-    }
   }
     response.redirect('/');
   });
