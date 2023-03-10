@@ -7,8 +7,7 @@ body {
 }
 
 h1 {
-  background-color: #00ffdd;
-  background-color: #E2EEEE;
+  color: green;
   font-size: 40px;
   display: inline-block;
   position: absolute;
@@ -52,7 +51,6 @@ a {
 }
 
 footer {
-  padding: 3px;
   background-color: #FDDC5C;
   font-size: 50%;
   text-align: center;

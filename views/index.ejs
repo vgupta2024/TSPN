@@ -6,31 +6,42 @@
   <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src ="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 <script src ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
-<link rel ="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel ="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
+<style>
+  .mainText {
+    color: blue;
+    font-family: Georgia;
+    font-weight: bold;
+    border: 1px solid black;
+  }
+  </style>
 <% if (user) { %>
-<h1> HIGHLIGHTS </h1>
+ <h1 class = "mainText">  HIGHLIGHTS  </h1>
 <% for (video in videoNames) { %>
 <video width="320" height="300" controls>
   <source src= "/videos/<%=videoNames[video]['filename']%>" type="video/mp4"/>
 </video>
 <% } %>
 <br><br><br><br>
-<h1> UPCOMING GAMES </h1>
+ <h1 class = "mainText"> UPCOMING GAMES </h1>
 <br><br><br><br>
 <body>
   <% for (sport in data) { %>
+
     <% for (gender in data[sport]) { %>
+      <% if (data[sport][gender]["UpcomingGames"].length > 0) { %>
+    <h1> <%= gender %> <%= sport %>: </h1>
 <% for (let games in data[sport][gender]["UpcomingGames"]) { %>
+  <br><br><br>
 <div class="card bg-primary mb-3 border-primary mb-3" style="width: 100rem; background: linear-gradient(to right, yellow, blue); border-width: 1em;">
 <div class="card-body">
-  <h5 class="card-title" style= "color:blue;"><%=gender%>' <%=sport%>: <%=data[sport][gender]["UpcomingGames"][games]%></h5>
+  <h5 class="card-title" style= "color:blue;"><%=gender%> <%=sport%>: <%=data[sport][gender]["UpcomingGames"][games]%></h5>
   <p class="card-text"><%=data[sport][gender]["GameInfo"][games]%></p>
 </div>
 </div>
 
-<% }}} %>
+<% }}}} %>
 <%}else{ %>
   <style>
   .login {
@@ -43,7 +54,6 @@
     animation-delay: .5s;
     animation-fill-mode: both;
     font-size:30px;
-    margin: auto;
     text-align: center;
     font-family: Monospace;
   }

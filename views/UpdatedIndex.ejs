@@ -7,22 +7,34 @@
 <link rel ="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel ="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 <% if (date) { %>
-<% if (user) { %>
-<h1> HIGHLIGHTS </h1>
-<% for (video in videoNames) { %>
-<video width="320" height="300" controls>
-  <source src= "/videos/<%=videoNames[video]['filename']%>" type="video/mp4"/>
-</video>
-<% } %>
-<br><br><br><br>
-<h1> UPCOMING GAMES </h1>
+  <style>
+    .mainText {
+      color: blue;
+      font-family: Georgia;
+      font-weight: bold;
+      border: 1px solid black;
+    }
+    </style>
+  <% if (user) { %>
+   <h1 class = "mainText">  HIGHLIGHTS  </h1>
+  <% for (video in videoNames) { %>
+  <video width="320" height="300" controls>
+    <source src= "/videos/<%=videoNames[video]['filename']%>" type="video/mp4"/>
+  </video>
+  <% } %>
+  <br><br><br><br>
+   <h1 class = "mainText"> UPCOMING GAMES </h1>
 <br><br><br><br>
 <body>
   <% for (sport in data) { %>
     <% for (gender in data[sport]) { %>
+        <% if (data[sport][gender]["UpcomingGames"].length > 0) { %>
+          <h1> <%= gender %> <%= sport %>: </h1>
+            <br> <br> <br> <br>
 <% for (let games in data[sport][gender]["UpcomingGames"]) { %>
 
 <% if (data[sport][gender]["UpcomingGames"][games].split("/")[0] >= parseInt(date.split("-")[1]) && data[sport][gender]["UpcomingGames"][games].split("/")[1] >= parseInt(date.split("-")[2]) ) { %>
+  <br><br><br>
 <div class="card bg-primary mb-3 border-primary mb-3" style="width: 100rem; background: linear-gradient(to right, yellow, blue); border-width: 1em;">
 <div class="card-body">
   <h5 class="card-title" style= "color:blue;"><%=gender%>' <%=sport%>: <%=data[sport][gender]["UpcomingGames"][games]%></h5>
@@ -30,7 +42,7 @@
 </div>
 </div>
 
-<% }}}} %>
+<% }}}}} %>
 <%}else{ %>
   <a href="/login">Click to login</a>
     <% } } else {  %>
