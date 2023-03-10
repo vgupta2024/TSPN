@@ -78,18 +78,17 @@ router.get('/sport/uploadText', function(request, response) {
       userData: userData
 
     });
-    for (let games in sports["Basketball"]["Boys"]["UpcomingGames"]) {
-    console.log(games);
-  }
 });
 
 router.post('/sport/uploadText', function(request, response) {
-        let date = request.body.game;
+        let s = request.body.game;
+        let sport = s.split("|")[0];
+        let team = s.split("|")[1];
+        let date = s.split("|")[2];
         let info = request.body.information;
         let sports = Sport.getAllSports();
-        let index = sports["Basketball"]["Boys"]["UpcomingGames"].indexOf(date);
-          console.log("HERE:" + date);
-        sports["Basketball"]["Boys"]["GameInfo"][index] = info;
+        let index = sports[sport][team]["UpcomingGames"].indexOf(date);
+        sports[sport][team]["GameInfo"][index] = info;
 
           fs.writeFileSync('data/sports.json', JSON.stringify(sports));
           response.redirect("/");
@@ -97,19 +96,6 @@ router.post('/sport/uploadText', function(request, response) {
 
 });
 
-router.post('/sport/uploadText', function(request, response) {
-        let date = request.body.myFile;
-        let info = request.body.information;
-        let sports = Sport.getAllSports();
-        let index = sports["Basketball"]["Boys"]["UpcomingGames"].indexOf(date);
-          console.log("HERE:" + date);
-        sports["Basketball"]["Boys"]["GameInfo"][index] = info;
-
-          fs.writeFileSync('data/sports.json', JSON.stringify(sports));
-          response.redirect("/");
-
-
-});
 
 router.get('/sport/:sport', function(request, response) {
     let sport = request.params.sport;
@@ -126,5 +112,4 @@ router.get('/sport/:sport', function(request, response) {
         videoNames: videoNames
 
     });
-    console.log(sport);
 });
