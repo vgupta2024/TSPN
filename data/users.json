@@ -1,7 +1,8 @@
 {
   "jtrac52@gmail.com": {
     "displayName": "jtrac52",
-    "privileges": ["user"]
+    "privileges": ["user"],
+    "sport": "admin"
   },
   "james.tractenberg23@trinityschoolnyc.org": {
     "displayName": "james.tractenberg23",
@@ -9,10 +10,12 @@
   },
   "varun.gupta24@trinityschoolnyc.org": {
     "displayName": "varun.gupta24",
-    "privileges": ["user", "admin"]
+    "privileges": ["user", "admin"],
+    "sport": "admin"
   },
   "jtrac@umich.edu": {
     "displayName": "jtrac",
-    "privileges": ["user", "admin"]
+    "privileges": ["user", "admin"],
+    "sport": "admin"
   }
 }

@@ -7,9 +7,12 @@
   <label for="upcominggames"> Which Upcoming Game?:</label>
   <select id="game" name="game">
 
-    <% for (let i = 0; i < data["Basketball"]["Boys"]["UpcomingGames"].length; i++) { %>
-    <option value="<%=data["Basketball"]["Boys"]["UpcomingGames"][i]%>"><%=data["Basketball"]["Boys"]["UpcomingGames"][i]%></option>
-    <%}%>
+    <% for (sport in data) { %>
+      <% if((userData[user._json.email]["sport"] == sport)||(userData[user._json.email]["sport"] == 'admin')) { %>
+      <% for (team in data[sport]) { %>
+        <% for (let i = 0; i < data[sport][team]["UpcomingGames"].length; i++) { %>
+    <option value="<%=sport%>|<%=team%>|<%=data[sport][team]["UpcomingGames"][i]%>"> <%=sport%> <%=team%> <%=data[sport][team]["UpcomingGames"][i]%></option>
+    <%}}}}%>
     </select>
     <br><br><br>
   <label for="Game Information"> Game Information:</label>

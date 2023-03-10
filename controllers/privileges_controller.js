@@ -11,21 +11,28 @@ const User = require('../models/user_model');
 router.post('/privileges', function(request, response) {
         let userEmail = request.body.userEmail;
         let privilege = request.body.privileges;
+        let captainSport;
+        if (privilege.split(" ")[1] == "Captain") {
+        captainSport = privilege.split(" ")[0];
+      }else{
+        captainSport = "admin";
+      }
         let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
         for (users in userAuthority) {
         if (userEmail != users) {
         userAuthority[userEmail] =
         {
           "displayName": userEmail.split("@")[0],
-          "privileges": ["user", privilege]
+          "privileges": ["user", privilege.split(" ")[1]],
+          "sport": captainSport
         };
       } else {
-      userAuthority[users]["privileges"] = ["user", privilege];
+      userAuthority[users]["privileges"] = ["user", privilege.split(" ")[1]];
+      userAuthority[users]["sport"] = captainSport;
       }
         }
           fs.writeFileSync('data/users.json', JSON.stringify(userAuthority));
           response.redirect("/");
-
 
 });
 
