@@ -17,10 +17,13 @@ router.post('/privileges', function(request, response) {
         userAuthority[userEmail] =
         {
           "displayName": userEmail.split("@")[0],
-          "privileges": ["user", privilege]
+          "privileges": ["user",privilege.split(" ")[1]];
+          "sport": privilege.split(" ")[0];
         };
       } else {
-      userAuthority[users]["privileges"] = ["user", privilege];
+      userAuthority[users]["privileges"] = privilege.split(" ")[1];
+        userAuthority[users]["sport"] = privilege.split(" ")[0];
+
       }
         }
           fs.writeFileSync('data/users.json', JSON.stringify(userAuthority));
