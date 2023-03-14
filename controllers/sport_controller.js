@@ -148,9 +148,11 @@ router.post('/sport/uploadText', function(request, response) {
 
 router.get('/sport/:sport', function(request, response) {
     let sport = request.params.sport;
+    console.log(sport);
       let userData = User.getUsers();
     let sports = Sport.getAllSports();
     let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
+    let imageNames = JSON.parse(fs.readFileSync(__dirname+'/../data/imageNames.json'));
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("sports/team", {
@@ -158,7 +160,8 @@ router.get('/sport/:sport', function(request, response) {
       sport: sport,
       user: request.user,
         userData: userData,
-        videoNames: videoNames
+        videoNames: videoNames,
+        imageNames: imageNames
 
     });
 });
