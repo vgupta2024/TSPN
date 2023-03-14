@@ -173,6 +173,7 @@ router.get('/sport/:sport', async function(request, response) {
       let userData = User.getUsers();
     let sports = Sport.getAllSports();
     let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
+    let imageNames = JSON.parse(fs.readFileSync(__dirname+'/../data/imageNames.json'));
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("sports/team", {
@@ -181,6 +182,7 @@ router.get('/sport/:sport', async function(request, response) {
       user: request.user,
         userData: userData,
         videoNames: videoNames,
+        imageNames: imageNames,
         time: timeData
 
     });
