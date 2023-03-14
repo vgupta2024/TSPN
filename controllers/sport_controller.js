@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const multer = require('multer');
   router = express.Router();
+  const axios = require('axios');
 
 const Sport = require('../models/sport_model');
 const User = require('../models/user_model');
@@ -97,8 +98,19 @@ router.post('/sport/uploadText', function(request, response) {
 });
 
 
-router.get('/sport/:sport', function(request, response) {
+router.get('/sport/:sport', async function(request, response) {
     let sport = request.params.sport;
+    let timeData;
+    try {
+
+    const resp = await axios.get('http://worldtimeapi.org/api/timezone/America/New_York');
+    let time = resp["data"]["datetime"];
+     timeData = time;
+    console.log(time);
+  } catch (err) {
+     console.error(err);
+    time = "";
+  }
       let userData = User.getUsers();
     let sports = Sport.getAllSports();
     let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
@@ -109,7 +121,8 @@ router.get('/sport/:sport', function(request, response) {
       sport: sport,
       user: request.user,
         userData: userData,
-        videoNames: videoNames
+        videoNames: videoNames,
+        time: timeData
 
     });
 });

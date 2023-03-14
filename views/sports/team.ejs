@@ -10,17 +10,33 @@
 </video>
 <% }} %>
 <br><br><br>
-<h3> Next Game: </h3>
+<h3> Upcoming Games: </h3>
   <% for (gender in data[sport]) { %>
 <% if (data[sport][gender]["UpcomingGames"].length > 0){ %>
+  <% for (let games in data[sport][gender]["UpcomingGames"]) { %>
+  <% if (data[sport][gender]["UpcomingGames"][games].split("/")[0] >= parseInt(time.split("-")[1]) && data[sport][gender]["UpcomingGames"][games].split("/")[1] >= parseInt(time.split("-")[2])) { %>
 <div class="card bg-primary mb-3 border-primary mb-3" style="width: 100rem; background: linear-gradient(to right, yellow, blue); border-width: 1em;">
 <div class="card-body">
-<h5 class="card-title" style= "color:blue;"><%=gender%> <%=sport%>: <%=data[sport][gender]["UpcomingGames"][0]%></h5>
-<p class="card-text"><%=data[sport][gender]["GameInfo"][0]%></p>
+<h5 class="card-title" style= "color:blue;"><%=gender%> <%=sport%>: <%=data[sport][gender]["UpcomingGames"][games]%></h5>
+<p class="card-text"><%=data[sport][gender]["GameInfo"][games]%></p>
 </div>
 </div>
 
-<% }} %>
+<% }}}} %>
+
+<h3> Past Games: </h3>
+<% for (gender in data[sport]) { %>
+<% if (data[sport][gender]["UpcomingGames"].length > 0){ %>
+<% for (let games in data[sport][gender]["UpcomingGames"]) { %>
+<% if ((data[sport][gender]["UpcomingGames"][games].split("/")[0] == parseInt(time.split("-")[1]) && data[sport][gender]["UpcomingGames"][games].split("/")[1] < parseInt(time.split("-")[2])) || (data[sport][gender]["UpcomingGames"][games].split("/")[0] < parseInt(time.split("-")[1]))) { %>
+<div class="card bg-primary mb-3 border-primary mb-3" style="width: 100rem; background: linear-gradient(to right, yellow, blue); border-width: 1em;">
+<div class="card-body">
+<h5 class="card-title" style= "color:blue;"><%=gender%> <%=sport%>: <%=data[sport][gender]["UpcomingGames"][games]%></h5>
+<p class="card-text"><%=data[sport][gender]["GameInfo"][games]%></p>
+</div>
+</div>
+
+<% }}}} %>
 <br><br><br>
 <% for (gender in data[sport]) { %>
 <h3> <%=gender%> Record: <%=data[sport][gender]["Wins"]%> - <%=data[sport][gender]["Losses"]%> </h3>

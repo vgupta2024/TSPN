@@ -1,6 +1,7 @@
 const express = require('express'),
   router = express.Router();
 const fs = require('fs');
+const axios = require('axios');
 
 const Stat = require('../models/stat_model');
 const Sport = require('../models/sport_model')
