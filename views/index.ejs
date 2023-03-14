@@ -19,9 +19,13 @@
 <% if (user) { %>
  <h1 class = "mainText">  HIGHLIGHTS  </h1>
 <% for (video in videoNames) { %>
-<video width="320" height="300" controls>
-  <source src= "/videos/<%=videoNames[video]['filename']%>" type="video/mp4"/>
-</video>
+  <video width="320" height="300" controls>
+    <source src= "/videos/<%=videoNames[video]['filename']%>" type="video/mp4"/>
+  </video>
+<% } %>
+<br><br><br><br>
+<% for (image in imageNames) { %>
+  <img src= "/images/<%=imageNames[image]['filename']%>" alt="<%=imageNames[image]['originalName']%>" width = "400" height = "400"/>
 <% } %>
 <br><br><br><br>
  <h1 class = "mainText"> UPCOMING GAMES </h1>
@@ -75,7 +79,7 @@
     to {top: 50px; background-color: yellow;}
   }
   </style>
-  <div class = "images"> <img src="/images/TSPN.png" width="100px"/> </div>
+  <div class = "images"> <img src="/logos/TSPN.png" width="100px"/> </div>
   <div class = "login"> <a href="/login"> <br><br><br><br><br><br><br><br>Click to login</a></div>
     <% }%>
 

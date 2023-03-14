@@ -26,6 +26,17 @@ cb(null, Date.now()+'-'+file.originalname.replace(' ', '-'));
 
 let publicUpload = multer({ storage: publicStorage });
 
+let publicStorage1 = multer.diskStorage ({
+destination: function (req, file, cb) {
+cb(null,'./public/images');
+},
+filename: function (req, file, cb) {
+cb(null, Date.now()+'-'+file.originalname.replace(' ', '-'));
+}
+});
+
+let publicUpload1 = multer({ storage: publicStorage1 });
+
 router.post('/sport/uploadHighlights', publicUpload.single('myFile'), (req, res, next) => {
   const file = req.file;
   let sport = req.body.sport;
@@ -52,6 +63,44 @@ router.post('/sport/uploadHighlights', publicUpload.single('myFile'), (req, res,
   res.send (error);
   }
 }
+});
+
+router.post('/sport/uploadImages', publicUpload1.single('myFile'), (req, res, next) => {
+  const file = req.file;
+  let sport = req.body.sport;
+  if((file['filename'].split(".")[1]=="jpg")||(file['filename'].split(".")[1]=="png")|| (file['filename'].split(".")[1]=="jpeg")){
+  let imageNum = Sport.getImageNum();
+  if(imageNum == 'NaN'){
+    imageNum = 0;
+  }
+  if(imageNum == 'undefined'){
+    imageNum = 0;
+  }
+  let images = Sport.getAllImages();
+  images[imageNum] = file;
+  images[imageNum]['sport'] = sport;
+  fs.writeFileSync('data/imageNames.json', JSON.stringify(images));
+  res.redirect("/");
+}else{
+  const error = {
+  'httpStatusCode': 400,
+  'message': 'Please upload a file with a supported image type (.jpg or .png)'
+  }
+  res.send (error);
+}
+});
+
+router.get('/sport/uploadImages', function(request, response) {
+    let sports = Sport.getAllSports();
+      let userData = User.getUsers();
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("sports/uploadImages", {
+      data: sports,
+      user: request.user,
+      userData: userData
+
+    });
 });
 
 router.get('/sport/uploadHighlights', function(request, response) {

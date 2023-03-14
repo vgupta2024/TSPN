@@ -1,0 +1,24 @@
+<%- include('../partials/header', {title:"TSPN"}, {data:data}, {userData: userData} ) -%>
+
+<% if (user) { %>
+<h2>Welcome, <%=user._json.email.split("@")[0]%>!</h2>
+
+
+<form action="/sport/uploadImages" enctype="multipart/form-data" method="POST">
+  <label for="upcominggames"> Which Sport?:</label>
+  <select id="sport" name="sport">
+    <% for(let sport in data){ %>
+      <% for(let team in data[sport]){ %>
+        <% if((userData[user._json.email]["sport"] == sport)||(userData[user._json.email]["sport"] == 'admin')) { %>
+      <option value="<%=sport%>|<%=team%>"><%=sport%> <%=team%></option>
+      <%}}}%>
+    </select>
+   <input type="file" name="myFile" accept="image/*" required/>
+   <br>
+   <input type="submit" value="Upload a file" required/>
+</form>
+
+
+
+<% } %>
+<%- include('../partials/footer') -%>
