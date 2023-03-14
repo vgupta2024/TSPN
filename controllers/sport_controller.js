@@ -116,6 +116,16 @@ router.get('/sport/uploadHighlights', function(request, response) {
 
     });
 });
+router.get('/HighlightDelete/:videoName', function(request, response) {
+  console.log("delete");
+    let video = request.params.videoName;
+      let data = JSON.parse(fs.readFileSync('data/videoNames.json'));
+      for(video in data){
+  delete data[video];
+  }
+      fs.writeFileSync('data/videoNames.json', JSON.stringify(data));
+      response.redirect("/");
+});
 
 router.get('/sport/uploadText', function(request, response) {
     let sports = Sport.getAllSports();
