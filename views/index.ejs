@@ -7,6 +7,8 @@
 <script src ="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 <script src ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
 <link rel ="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 <style>
   .mainText {
@@ -32,20 +34,18 @@
 <br><br><br><br>
 <body>
   <% for (sport in data) { %>
-
     <% for (gender in data[sport]) { %>
       <% if (data[sport][gender]["UpcomingGames"].length > 0) { %>
-    <h1> <%= gender %> <%= sport %>: </h1>
+      <h2> <%= gender %> <%= sport %>: </h2>
 <% for (let games in data[sport][gender]["UpcomingGames"]) { %>
-  <br><br><br>
-<div class="card bg-primary mb-3 border-primary mb-3" style="width: 100rem; background: linear-gradient(to right, yellow, blue); border-width: 1em;">
+  <div class="card bg-primary mb-3 border-primary mb-3" style="width: 100rem; background: linear-gradient(to right, yellow, blue); border-width: 1em;">
 <div class="card-body">
-  <h5 class="card-title" style= "color:blue;"><%=gender%> <%=sport%>: <%=data[sport][gender]["UpcomingGames"][games]%></h5>
-  <p class="card-text"><%=data[sport][gender]["GameInfo"][games]%></p>
+<h5 class="card-title" style= "color:blue;"><%=gender%> <%=sport%>: <%=data[sport][gender]["UpcomingGames"][games]%></h5>
+<p class="card-text"><%=data[sport][gender]["GameInfo"][games]%></p>
 </div>
 </div>
-
 <% }}}} %>
+
 <%}else{ %>
   <style>
   .login {

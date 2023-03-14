@@ -33,12 +33,10 @@
   <% for (sport in data) { %>
     <% for (gender in data[sport]) { %>
         <% if (data[sport][gender]["UpcomingGames"].length > 0) { %>
-          <h1> <%= gender %> <%= sport %>: </h1>
-            <br> <br> <br> <br>
+          <h2> <%= gender %> <%= sport %>: </h2>
 <% for (let games in data[sport][gender]["UpcomingGames"]) { %>
 
 <% if (data[sport][gender]["UpcomingGames"][games].split("/")[0] >= parseInt(date.split("-")[1]) && data[sport][gender]["UpcomingGames"][games].split("/")[1] >= parseInt(date.split("-")[2]) ) { %>
-  <br><br><br>
 <div class="card bg-primary mb-3 border-primary mb-3" style="width: 100rem; background: linear-gradient(to right, yellow, blue); border-width: 1em;">
 <div class="card-body">
   <h5 class="card-title" style= "color:blue;"><%=gender%>' <%=sport%>: <%=data[sport][gender]["UpcomingGames"][games]%></h5>
