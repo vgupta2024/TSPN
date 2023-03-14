@@ -33,3 +33,17 @@ exports.getVideoNum=  function() {
   }
   return counter;
 }
+
+exports.getAllImages=  function() {
+  let allImages = JSON.parse(fs.readFileSync(__dirname+'/../data/imageNames.json'));
+  return allImages;
+}
+
+exports.getImageNum=  function() {
+  let allImages = JSON.parse(fs.readFileSync(__dirname+'/../data/imageNames.json'));
+  let counter = 0;
+  for (image in allImages){
+    counter ++;
+  }
+  return counter;
+}

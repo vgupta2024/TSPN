@@ -12,6 +12,7 @@ router.get('/updatedIndex', function(request, response) {
   let sports = Sport.getAllSports();
     let userData = User.getUsers();
     let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
+    let imageNames = JSON.parse(fs.readFileSync(__dirname+'/../data/imageNames.json'));
 
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
@@ -20,6 +21,7 @@ router.get('/updatedIndex', function(request, response) {
     user: request.user,
     userData: userData,
     videoNames: videoNames,
+    imageNames: imageNames,
     date: date
   });
 });
@@ -28,13 +30,15 @@ router.get('/', function(request, response) {
   let sports = Sport.getAllSports();
     let userData = User.getUsers();
     let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
+    let imageNames = JSON.parse(fs.readFileSync(__dirname+'/../data/imageNames.json'));
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render("index", {
   data: sports,
   user: request.user,
   userData: userData,
-  videoNames: videoNames
+  videoNames: videoNames,
+  imageNames: imageNames
 });
 });
 
