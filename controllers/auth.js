@@ -65,7 +65,7 @@ router.get('/auth/google/callback',
     let userID = request.user._json.email;
     let sports = Sport.getAllSports();
     let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
-    User.createUser(userID, userID.split('@')[0]);
+      User.createUser(userID, userID.split('@')[0]);
     for (users in userAuthority) {
 
   }

@@ -1,22 +1,22 @@
-
 {
   "james.tractenberg23@trinityschoolnyc.org": {
     "displayName": "james.tractenberg23",
-    "privileges": ["user", "admin"],
+    "privileges": "admin",
     "sport": "admin"
   },
   "varun.gupta24@trinityschoolnyc.org": {
     "displayName": "varun.gupta24",
-    "privileges": ["user", "admin"],
+    "privileges": "admin",
     "sport": "admin"
   },
   "jtrac@umich.edu": {
     "displayName": "jtrac",
-    "privileges": ["user"]
+    "privileges": "admin",
+    "sport": "admin"
   },
   "guptavarun2005@gmail.com": {
     "displayName": "guptavarun2005",
-    "privileges": ["user", "Captain"],
-    "sport": "Basketball"
+    "privileges": "admin",
+    "sport": "admin"
   }
 }
