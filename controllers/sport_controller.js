@@ -120,8 +120,10 @@ router.get('/HighlightDelete/:videoName', function(request, response) {
   console.log("delete");
     let video = request.params.videoName;
       let data = JSON.parse(fs.readFileSync('data/videoNames.json'));
-      for(video in data){
-  delete data[video];
+      for(videoName in data){
+      if (data[videoName]["filename"] == video) {
+  delete data[videoName];
+}
   }
       fs.writeFileSync('data/videoNames.json', JSON.stringify(data));
       response.redirect("/");

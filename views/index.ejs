@@ -25,14 +25,14 @@
     <source src= "/videos/<%=videoNames[video]['filename']%>" type="video/mp4"/>
   </video>
     <%  if (userData[user._json.email]["privileges"].includes('admin')) { %>
-  	<a href="/HighlightDelete/<%=video%>"><i class="material-icons">&#9249;</i></a>
+  <h5 style = "font-size: 2em;"><a href="/HighlightDelete/<%=videoNames[video]["filename"] %>"><i class="material-icons"">&times;</i></a> </h5>
 <% }} %>
 <br><br><br><br>
 <% for (image in imageNames) { %>
   <img src= "/images/<%=imageNames[image]['filename']%>" alt="<%=imageNames[image]['originalName']%>" width = "400" height = "400"/>
 	<a href="/ImageDelete/<%=image%>"><i class="material-icons">&#x2421;</i></a>
 <% } %>
-<br><br><br><br>
+<br>
  <h1 class = "mainText"> UPCOMING GAMES </h1>
 <br><br><br><br>
 <body>
