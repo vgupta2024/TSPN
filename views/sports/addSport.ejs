@@ -1,0 +1,26 @@
+<%- include('../partials/header', {title:"TSPN"}, {data:data}, {userData: userData} ) -%>
+
+<% if (user) { %>
+<h2>Welcome, <%=user._json.email.split("@")[0]%>!</h2>
+
+
+<form action="/sport/addSport" method="POST">
+  <label for="sportteam"> Which Sport?:</label>
+  <select id="sport" name="sport">
+    <% for(let sport in data){ %>
+      <% for(let team in data[sport]){ %>
+        <% if((userData[user._json.email]["sport"] == sport)||(userData[user._json.email]["sport"] == 'admin')) { %>
+      <option value="<%=sport%> <%=team%>"><%=sport%> <%=team%></option>
+      <%}}}%>
+    </select>
+    </br></br></br>
+    <label for="gamedate"> What Date?:</label>
+   <input type="text" name="date" value = "" required/>
+   <br></br></br>
+   <input type="submit" value="Add Game to Schedule" required/>
+</form>
+
+
+
+<% } %>
+<%- include('../partials/footer') -%>

@@ -116,6 +116,57 @@ router.get('/sport/uploadHighlights', function(request, response) {
 
     });
 });
+
+router.get('/sport/addSport', function(request, response) {
+    let sports = Sport.getAllSports();
+      let userData = User.getUsers();
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("sports/addSport", {
+      data: sports,
+      user: request.user,
+      userData: userData
+
+    });
+});
+
+router.post('/sport/addSport', function(request, response) {
+        let game = request.body.sport;
+        let date = request.body.date;
+        let sports = Sport.getAllSports();
+        let gender;
+        let sport;
+        for (let sportTeam in sports) {
+          for (let genders in sports[sportTeam]) {
+          if (game == sportTeam + " " + genders) {
+        gender = genders;
+        sport = sportTeam;
+      }
+    }
+  }
+console.log(gender);
+console.log(sport)
+
+sports[sport][gender]["UpcomingGames"].push(date);
+    fs.writeFileSync('data/sports.json', JSON.stringify(sports));
+      response.redirect("/");
+
+
+});
+
+router.get('/sport/removeSport', function(request, response) {
+    let sports = Sport.getAllSports();
+      let userData = User.getUsers();
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("sports/removeSport", {
+      data: sports,
+      user: request.user,
+      userData: userData
+
+    });
+});
+
 router.get('/HighlightDelete/:videoName', function(request, response) {
   console.log("delete");
     let video = request.params.videoName;
