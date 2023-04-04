@@ -15,6 +15,7 @@ app.set('view engine', 'ejs'); //specify templating library
 app.use(require('./controllers/auth'));
 app.use(require('./controllers/index'));
 app.use(require('./controllers/archive_controller'));
+app.use(require('./controllers/highlight_controller'));
 app.use(require('./controllers/sport_controller'));
 app.use(require('./controllers/privileges_controller'));
 
