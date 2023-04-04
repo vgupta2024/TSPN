@@ -150,6 +150,7 @@ console.log(gender);
 console.log(sport)
 
 sports[sport][gender]["UpcomingGames"].push(date);
+sports[sport][gender]["GameInfo"].push(" ");
     fs.writeFileSync('data/sports.json', JSON.stringify(sports));
       response.redirect("/");
 
@@ -192,6 +193,7 @@ console.log(sport)
 console.log(sports[sport][team]["UpcomingGames"].indexOf(date));
 let index = sports[sport][team]["UpcomingGames"].indexOf(date);
   sports[sport][team]["UpcomingGames"].splice(index,1);
+  sports[sport][team]["GameInfo"].splice(index,1);
     fs.writeFileSync('data/sports.json', JSON.stringify(sports));
       response.redirect("/");
 
