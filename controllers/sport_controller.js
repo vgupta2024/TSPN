@@ -132,7 +132,9 @@ router.get('/sport/addSport', function(request, response) {
 
 router.post('/sport/addSport', function(request, response) {
         let game = request.body.sport;
-        let date = request.body.date;
+        let dateInitial = request.body.date;
+        let date = parseInt(dateInitial.split("-")[1]) + "/" + parseInt(dateInitial.split("-")[2]);
+        console.log(date);
         let sports = Sport.getAllSports();
         let gender;
         let sport;
@@ -165,6 +167,35 @@ router.get('/sport/removeSport', function(request, response) {
       userData: userData
 
     });
+});
+
+router.post('/sport/removeSport', function(request, response) {
+        let game = request.body.game;
+        console.log(game);
+        let sports = Sport.getAllSports();
+        let team;
+        let sport;
+        let date;
+        for (let sportTeam in sports) {
+          for (let teams in sports[sportTeam]) {
+            for (let games in sports[sportTeam][teams]["UpcomingGames"]) {
+          if (game == sportTeam + " " + teams + " " + sports[sportTeam][teams]["UpcomingGames"][games]) {
+        team = teams;
+        sport = sportTeam;
+        date = sports[sportTeam][teams]["UpcomingGames"][games];
+      }
+    }
+  }
+}
+console.log(team);
+console.log(sport)
+console.log(sports[sport][team]["UpcomingGames"].indexOf(date));
+let index = sports[sport][team]["UpcomingGames"].indexOf(date);
+  sports[sport][team]["UpcomingGames"].splice(index,1);
+    fs.writeFileSync('data/sports.json', JSON.stringify(sports));
+      response.redirect("/");
+
+
 });
 
 router.get('/HighlightDelete/:videoName', function(request, response) {
