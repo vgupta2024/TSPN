@@ -3,7 +3,7 @@
 <% if (user) { %>
 <h2>Welcome, <%=user._json.email.split("@")[0]%>!</h2>
 
-<form action="/sport/uploadText" method="POST">
+<form action="/highlights/uploadText" method="POST">
   <label for="upcominggames"> Which Upcoming Game?:</label>
   <select id="game" name="game">
 

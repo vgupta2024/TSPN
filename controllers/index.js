@@ -3,7 +3,6 @@ const express = require('express'),
 const fs = require('fs');
 const axios = require('axios');
 
-const Stat = require('../models/stat_model');
 const Sport = require('../models/sport_model')
 const User = require('../models/user_model')
 

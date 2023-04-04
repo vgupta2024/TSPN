@@ -4,7 +4,7 @@
 <h2>Welcome, <%=user._json.email.split("@")[0]%>!</h2>
 
 
-<form action="/sport/uploadImages" enctype="multipart/form-data" method="POST">
+<form action="/highlights/uploadHighlights" enctype="multipart/form-data" method="POST">
   <label for="upcominggames"> Which Sport?:</label>
   <select id="sport" name="sport">
     <% for(let sport in data){ %>
@@ -13,7 +13,7 @@
       <option value="<%=sport%>|<%=team%>"><%=sport%> <%=team%></option>
       <%}}}%>
     </select>
-   <input type="file" name="myFile" accept="image/*" required/>
+   <input type="file" name="myFile" accept="video/*" required/>
    <br>
    <input type="submit" value="Upload a file" required/>
 </form>
