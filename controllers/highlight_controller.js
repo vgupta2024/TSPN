@@ -131,6 +131,19 @@ router.get('/HighlightDelete/:videoName', function(request, response) {
       response.redirect("/");
 });
 
+router.get('/ImageDelete/:imageName', function(request, response) {
+    let image = request.params.imageName;
+    console.log(image);
+      let data = JSON.parse(fs.readFileSync('data/imageNames.json'));
+      for(imageName in data){
+      if (data[imageName]["filename"] == image) {
+  delete data[imageName];
+}
+  }
+      fs.writeFileSync('data/imageNames.json', JSON.stringify(data));
+      response.redirect("/");
+});
+
 router.get('/sport/uploadText', function(request, response) {
     let sports = Sport.getAllSports();
       let userData = User.getUsers();
@@ -158,17 +171,4 @@ router.post('/sport/uploadText', function(request, response) {
           response.redirect("/");
 
 
-});
-
-router.get('/HighlightDelete/:videoName', function(request, response) {
-  console.log("delete");
-    let video = request.params.videoName;
-      let data = JSON.parse(fs.readFileSync('data/videoNames.json'));
-      for(videoName in data){
-      if (data[videoName]["filename"] == video) {
-  delete data[videoName];
-}
-  }
-      fs.writeFileSync('data/videoNames.json', JSON.stringify(data));
-      response.redirect("/");
 });

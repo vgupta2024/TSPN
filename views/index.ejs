@@ -29,8 +29,9 @@
 <br><br><br><br>
 <% for (image in imageNames) { %>
   <img src= "/images/<%=imageNames[image]['filename']%>" alt="<%=imageNames[image]['originalName']%>" width = "400" height = "400"/>
-	<a href="/ImageDelete/<%=image%>"><i class="material-icons">&#x2421;</i></a>
-<% } %>
+  <%  if (userData[user._json.email]["privileges"].includes('admin')) { %>
+    <h5 style = "font-size: 2em;"><a href="/ImageDelete/<%=imageNames[image]["filename"] %>"><i class="material-icons"">&times;</i></a> </h5>
+<% }} %>
 <br>
  <h1 class = "mainText"> UPCOMING GAMES </h1>
 <br><br><br><br>
