@@ -17,7 +17,7 @@ app.use(require('./controllers/index'));
 app.use(require('./controllers/archive_controller'));
 app.use(require('./controllers/highlight_controller'));
 app.use(require('./controllers/sport_controller'));
-app.use(require('./controllers/privileges_controller'));
+app.use(require('./controllers/user_controller'));
 
 
 app.use("", function(request, response) {

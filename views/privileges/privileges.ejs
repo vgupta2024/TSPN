@@ -3,7 +3,7 @@
 <% if (user) { %>
 <h2>Welcome, Admin <%=user._json.email.split("@")[0]%>!</h2>
 
-<form action="/privileges" method="POST">
+<form action="/users" method="POST">
   <label for="Game Information"> What is the user's email?:</label>
   <input class="lead" type="text" id="userEmail" name="userEmail" value="">
 <br> <br> <br>

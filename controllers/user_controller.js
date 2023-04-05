@@ -4,11 +4,10 @@ const fs = require('fs');
 
 const Sport = require('../models/sport_model');
 const Archive = require('../models/archive_model');
-const Stat = require('../models/stat_model');
 const User = require('../models/user_model');
 
 
-router.post('/privileges', function(request, response) {
+router.post('/users', function(request, response) {
         let userEmail = request.body.userEmail;
         let privilege = request.body.privileges;
         let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
@@ -52,7 +51,7 @@ router.post('/privileges', function(request, response) {
 
 });
 
-router.get('/privileges', function(request, response) {
+router.get('/users', function(request, response) {
     let data = Sport.getAllSports();
     let userData = User.getUsers();
     let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));

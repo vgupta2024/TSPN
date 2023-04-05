@@ -6,12 +6,7 @@ const multer = require('multer');
 
 const Sport = require('../models/sport_model');
 const User = require('../models/user_model');
-
-router.get('/users', function(request, response) {
-  let allUsers = Sport.getAllUsers();
-  response.send(allUsers);
-
-});
+const Highlight = require('../models/highlight_model');
 
 module.exports = router;
 
@@ -39,11 +34,11 @@ cb(null, Date.now()+'-'+file.originalname.replace(' ', '-'));
 
 let publicUpload1 = multer({ storage: publicStorage1 });
 
-router.post('/sport/uploadHighlights', publicUpload.single('myFile'), (req, res, next) => {
+router.post('/highlights/uploadHighlights', publicUpload.single('myFile'), (req, res, next) => {
   const file = req.file;
   let sport = req.body.sport;
   if((file['filename'].split(".")[1]=="mov")||(file['filename'].split(".")[1]=="mp4")){
-  let videoNum = Sport.getVideoNum();
+  let videoNum = Highlight.getVideoNum();
   if(videoNum == 'NaN'){
     videoNum = 0;
   }
@@ -51,7 +46,7 @@ router.post('/sport/uploadHighlights', publicUpload.single('myFile'), (req, res,
     videoNum = 0;
   }
   console.log(videoNum);
-  let videos = Sport.getAllVideos();
+  let videos = Highlight.getAllVideos();
   videos[videoNum] = file;
   videos[videoNum]['sport'] = sport;
   fs.writeFileSync('data/videoNames.json', JSON.stringify(videos));
@@ -67,18 +62,18 @@ router.post('/sport/uploadHighlights', publicUpload.single('myFile'), (req, res,
 }
 });
 
-router.post('/sport/uploadImages', publicUpload1.single('myFile'), (req, res, next) => {
+router.post('/highlights/uploadImages', publicUpload1.single('myFile'), (req, res, next) => {
   const file = req.file;
   let sport = req.body.sport;
   if((file['filename'].split(".")[1]=="jpg")||(file['filename'].split(".")[1]=="png")|| (file['filename'].split(".")[1]=="jpeg")){
-  let imageNum = Sport.getImageNum();
+  let imageNum = Highlight.getImageNum();
   if(imageNum == 'NaN'){
     imageNum = 0;
   }
   if(imageNum == 'undefined'){
     imageNum = 0;
   }
-  let images = Sport.getAllImages();
+  let images = Highlight.getAllImages();
   images[imageNum] = file;
   images[imageNum]['sport'] = sport;
   fs.writeFileSync('data/imageNames.json', JSON.stringify(images));
@@ -92,12 +87,12 @@ router.post('/sport/uploadImages', publicUpload1.single('myFile'), (req, res, ne
 }
 });
 
-router.get('/sport/uploadImages', function(request, response) {
+router.get('/highlights/uploadImages', function(request, response) {
     let sports = Sport.getAllSports();
       let userData = User.getUsers();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render("sports/uploadImages", {
+    response.render("highlights/uploadImages", {
       data: sports,
       user: request.user,
       userData: userData
@@ -105,12 +100,12 @@ router.get('/sport/uploadImages', function(request, response) {
     });
 });
 
-router.get('/sport/uploadHighlights', function(request, response) {
+router.get('/highlights/uploadHighlights', function(request, response) {
     let sports = Sport.getAllSports();
       let userData = User.getUsers();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render("sports/uploadHighlights", {
+    response.render("highlights/uploadHighlights", {
       data: sports,
       user: request.user,
       userData: userData
@@ -118,7 +113,7 @@ router.get('/sport/uploadHighlights', function(request, response) {
     });
 });
 
-router.get('/HighlightDelete/:videoName', function(request, response) {
+router.get('/highlights/HighlightDelete/:videoName', function(request, response) {
   console.log("delete");
     let video = request.params.videoName;
       let data = JSON.parse(fs.readFileSync('data/videoNames.json'));
@@ -131,7 +126,7 @@ router.get('/HighlightDelete/:videoName', function(request, response) {
       response.redirect("/");
 });
 
-router.get('/ImageDelete/:imageName', function(request, response) {
+router.get('/highlights/ImageDelete/:imageName', function(request, response) {
     let image = request.params.imageName;
     console.log(image);
       let data = JSON.parse(fs.readFileSync('data/imageNames.json'));
@@ -144,12 +139,12 @@ router.get('/ImageDelete/:imageName', function(request, response) {
       response.redirect("/");
 });
 
-router.get('/sport/uploadText', function(request, response) {
+router.get('/highlights/uploadText', function(request, response) {
     let sports = Sport.getAllSports();
       let userData = User.getUsers();
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render("sports/uploadText", {
+    response.render("highlights/uploadText", {
       data: sports,
       user: request.user,
       userData: userData
@@ -157,7 +152,7 @@ router.get('/sport/uploadText', function(request, response) {
     });
 });
 
-router.post('/sport/uploadText', function(request, response) {
+router.post('/highlights/uploadText', function(request, response) {
         let s = request.body.game;
         let sport = s.split("|")[0];
         let team = s.split("|")[1];

@@ -8,12 +8,6 @@ const Sport = require('../models/sport_model');
 const User = require('../models/user_model');
 
 
-router.get('/users', function(request, response) {
-  let allUsers = Sport.getAllUsers();
-  response.send(allUsers);
-
-});
-
 module.exports = router;
 
 router.get('/sport/addSport', function(request, response) {
