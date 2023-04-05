@@ -1,37 +1,85 @@
 {
-"Basketball": {
-"Boys": {
-"Championships": 2
-},
-"Girls": {
-"Championships": 2
-}
-},
+  "Cross Country": {
+    "Boys": {
+      "Championships": 0
+    },
+    "Girls": {
+      "Championships": 0
+    }
+  },
+  "Volleyball": {
+    "Boys": {
+      "Championships": 0
+    },
+    "Girls": {
+      "Championships": 0
+    }
+  },
+  "Tennis": {
+    "Boys": {
+      "Championships": 0
 
-"Baseball": {
-"Boys": {
-"Championships": 3
-},
-"Girls": {
-"Championships": 5
-}
-},
-
-"Soccer": {
-"Boys": {
-"Championships": 7
-},
-"Girls": {
-"Championships": 1
-}
-},
-
-"Swim": {
-"Boys": {
-"Championships": 1
-},
-"Girls": {
-"Championships": 1
-}
-}
+    },
+    "Girls": {
+      "Championships": 0
+    }
+  },
+  "Water Polo": {
+    "Championships": 0
+  },
+  "Basketball": {
+    "Boys": {
+      "Championships": 0
+    },
+    "Girls": {
+      "Championships": 0
+    }
+  },
+  "Baseball": {
+    "Championships": 0
+  },
+  "Softball": {
+    "Championships": 0
+  },
+  "Soccer": {
+    "Boys": {
+      "Championships": 0
+    },
+    "Girls": {
+      "Championships": 0
+    },
+    "Swim": {
+      "Boys": {
+        "Championships": 0
+      },
+      "Girls": {
+        "Championships": 0
+      }
+    },
+    "Wrestling": {
+      "Championships": 0
+    }
+  },
+  "Indoor Track and Field": {
+    "Boys": {
+      "Championships": 0
+    },
+    "Girls": {
+      "Championships": 0
+    }
+  },
+  "Golf": {
+    "Championships": 0
+  },
+  "Track and Field": {
+    "Championships": 0
+  },
+  "Lacrosse": {
+    "Boys": {
+      "Championships": 0
+    },
+    "Girls": {
+      "Championships": 0
+    }
+  }
 }
