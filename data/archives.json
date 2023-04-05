@@ -25,7 +25,9 @@
     }
   },
   "Water Polo": {
+    "Co-ed": {
     "Championships": 0
+  }
   },
   "Basketball": {
     "Boys": {
@@ -36,10 +38,14 @@
     }
   },
   "Baseball": {
+    "Boys":{
     "Championships": 0
+  }
   },
   "Softball": {
+    "Girls":{
     "Championships": 0
+  }
   },
   "Soccer": {
     "Boys": {
@@ -57,6 +63,7 @@
       }
     },
     "Wrestling": {
+      "Boys": {
       "Championships": 0
     }
   },
@@ -69,10 +76,14 @@
     }
   },
   "Golf": {
+    "Co-ed":{
     "Championships": 0
+  }
   },
   "Track and Field": {
+    "Co-ed":{
     "Championships": 0
+  }
   },
   "Lacrosse": {
     "Boys": {
