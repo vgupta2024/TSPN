@@ -50,11 +50,14 @@
           <% } %>
 <img src="/logos/gray.png" alt="rectangle" width="700" height="400" style = "position:relative;">
   <h1 style = "position: absolute; left: 570px; top: 10px;"> <%=gender%> <%=sport%> </h1>
+  </br></br>
  <div class = "carousel-caption" style = "background:transparent;">
  <%for (let games in data[sport][gender]["UpcomingGames"]) { %>
 <% if (data[sport][gender]["UpcomingGames"][games].split("/")[0] >= parseInt(date.split("-")[1]) && data[sport][gender]["UpcomingGames"][games].split("/")[1] >= parseInt(date.split("-")[2]) ) { %>
 <p> <%=gender%> <%=sport%>: <%=data[sport][gender]["UpcomingGames"][games]%> </p>
 <p style = "position: center; color:red;"><%=data[sport][gender]["GameInfo"][games]%></p>
+</br>
+<p style = "position: center; color:blue;"><%=data[sport][gender]["scores"][games]%></p>
 </br></br>
 <% }} %>
 </div>
