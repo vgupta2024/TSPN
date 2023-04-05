@@ -1,1 +1,12 @@
-{"james.tractenberg23@trinityschoolnyc.org":{"displayName":"james.tractenberg23","privileges":"admin","sport":"admin"},"varun.gupta24@trinityschoolnyc.org":{"displayName":"varun.gupta24","privileges":"admin","sport":"admin"},"jtrac@umich.edu":{"displayName":"jtrac","privileges":"admin","sport":"admin"},"guptavarun2005@gmail.com":{"displayName":"guptavarun2005","privileges":"admin","sport":"admin"},"zachtrac@gmail.com":{"displayName":"zachtrac","privileges":"admin","sport":"admin"},"jtrac52@gmail.com":{"displayName":"jtrac52","privileges":"Captain","sport":"Baseball"}}
+{
+  "james.tractenberg23@trinityschoolnyc.org": {
+    "displayName": "james.tractenberg23",
+    "privileges": "admin",
+    "sport": "admin"
+  },
+  "varun.gupta24@trinityschoolnyc.org": {
+    "displayName": "varun.gupta24",
+    "privileges": "admin",
+    "sport": "admin"
+  }
+}

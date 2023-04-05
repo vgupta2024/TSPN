@@ -15,11 +15,19 @@ router.post('/privileges', function(request, response) {
         console.log(privilege);
         for (users in userAuthority) {
         if (userEmail != users && privilege.split(" ").length > 1) {
+          let userArray = [];
+
+        for (let i = 0; i < (privilege.split(" ").length - 1); i++) {
+        userArray.push(privilege.split(" ")[i]);
+        }
+
+        let userString  = userArray.join(" ");
+        console.log(userString);
         userAuthority[userEmail] =
         {
           "displayName": userEmail.split("@")[0],
-          "privileges": ["user",privilege.split(" ")[1]],
-          "sport": privilege.split(" ")[0]
+          "privileges": ["user","Captain"],
+          "sport": userString
         };
       } else if (userEmail != users && privilege == 'admin') {
         console.log("hi");
