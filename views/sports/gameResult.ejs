@@ -21,7 +21,7 @@
         <% if((userData[user._json.email]["sport"] == sport)||(userData[user._json.email]["sport"] == 'admin')) { %>
         <% for (team in data[sport]) { %>
           <% for (let i = 0; i < data[sport][team]["UpcomingGames"].length; i++) { %>
-          <% if (data[sport][team]["UpcomingGames"][i].split("/")[0] < parseInt(time.split("-")[1]) || data[sport][team]["UpcomingGames"][i].split("/")[0] == parseInt(time.split("-")[1]) && data[sport][team]["UpcomingGames"][i].split("/")[1] <= parseInt(time.split("-")[2])) { %>
+          <% if (data[sport][team]["scores"][i] == " " && data[sport][team]["UpcomingGames"][i].split("/")[0] < parseInt(time.split("-")[1]) || data[sport][team]["UpcomingGames"][i].split("/")[0] == parseInt(time.split("-")[1]) && data[sport][team]["UpcomingGames"][i].split("/")[1] <= parseInt(time.split("-")[2])) { %>
       <option value="<%=sport%> <%=team%> <%=data[sport][team]["UpcomingGames"][i]%>"> <%=sport%> <%=team%> <%=data[sport][team]["UpcomingGames"][i]%></option>
         </br></br>
       <%}}}}}%>
