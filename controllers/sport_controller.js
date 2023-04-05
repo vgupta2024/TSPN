@@ -23,6 +23,66 @@ router.get('/sport/addSport', function(request, response) {
     });
 });
 
+router.get('/sport/result', async function(request, response) {
+    let sports = Sport.getAllSports();
+      let userData = User.getUsers();
+      let timeData;
+      try {
+
+      const resp = await axios.get('http://worldtimeapi.org/api/timezone/America/New_York');
+      let time = resp["data"]["datetime"];
+       timeData = time;
+      console.log(time);
+    } catch (err) {
+       console.error(err);
+      time = "";
+    }
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("sports/gameResult", {
+      data: sports,
+      user: request.user,
+      userData: userData,
+      time: timeData
+    });
+});
+
+router.post('/sport/result', function(request, response) {
+        let trinity = request.body.Trinity;
+        let opponent = request.body.Opponent;
+        let sport = request.body.sport;
+        let upcomingGame = request.body.game;
+        let sports = Sport.getAllSports();
+        let gender;
+        let team;
+        for (let sportTeam in sports) {
+          for (let genders in sports[sportTeam]) {
+          if (sport == sportTeam + " " + genders) {
+        gender = genders;
+        team = sportTeam;
+      }
+    }
+  }
+console.log(gender);
+console.log(team);
+console.log(trinity);
+console.log(opponent);
+
+if (parseInt(trinity) > parseInt(opponent)) {
+sports[team][gender]["Wins"] += 1;
+
+}
+if (parseInt(trinity) < parseInt(opponent)) {
+sports[team][gender]["Losses"] += 1;
+}
+
+sports[team][gender]["scores"][sports[team][gender]["UpcomingGames"].indexOf(upcomingGame.split(" ")[upcomingGame.split(" ").length-1])] = ("Trinity: " + trinity + " Opponent: " + opponent);
+    fs.writeFileSync('data/sports.json', JSON.stringify(sports));
+      response.redirect("/");
+
+
+});
+
 router.post('/sport/addSport', function(request, response) {
         let game = request.body.sport;
         let dateInitial = request.body.date;
@@ -44,6 +104,7 @@ console.log(sport)
 
 sports[sport][gender]["UpcomingGames"].push(date);
 sports[sport][gender]["GameInfo"].push(" ");
+sports[sport][gender]["scores"].push(" ");
     fs.writeFileSync('data/sports.json', JSON.stringify(sports));
       response.redirect("/");
 
@@ -87,6 +148,7 @@ console.log(sports[sport][team]["UpcomingGames"].indexOf(date));
 let index = sports[sport][team]["UpcomingGames"].indexOf(date);
   sports[sport][team]["UpcomingGames"].splice(index,1);
   sports[sport][team]["GameInfo"].splice(index,1);
+  sports[sport][team]["scores"].splice(index,1);
     fs.writeFileSync('data/sports.json', JSON.stringify(sports));
       response.redirect("/");
 

@@ -5,11 +5,12 @@
 
 
 <form action="/sport/addSport" method="POST">
+  <p style = "text-align:left;"> <i> Note: Teams can have a MAXIMUM of three games on the home page. If you want to add a new game, delete a past game. </i></p>
   <label for="sportteam"> Which Sport?:</label>
   <select id="sport" name="sport">
     <% for(let sport in data){ %>
       <% for(let team in data[sport]){ %>
-        <% if((userData[user._json.email]["sport"] == sport)||(userData[user._json.email]["sport"] == 'admin')) { %>
+        <% if((userData[user._json.email]["sport"] == sport)||(userData[user._json.email]["sport"] == 'admin') && data[sport][team]["UpcomingGames"].length <= 3) { %>
       <option value="<%=sport%> <%=team%>"><%=sport%> <%=team%></option>
       <%}}}%>
     </select>

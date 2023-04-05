@@ -15,6 +15,8 @@
     font-family: Georgia;
     font-weight: bold;
     border: 1px solid black;
+    position: absolute;
+    left: 700px;
   }
   </style>
 <% if (user) { %>
@@ -48,11 +50,13 @@
           <div class="carousel-item">
           <% } %>
 <img src="/logos/gray.png" alt="rectangle" width="700" height="400" style = "position:relative;">
-  <h1 style = "position: absolute; left: 570px; top: 10px;"> <%=gender%> <%=sport%> </h1>
+  <h1 style = "text-align:center;font-weight:bold;font-family:Georgia; font-size:30px;"> <%=gender%> <%=sport%> </h1>
+  </br>
  <div class = "carousel-caption" style = "background:transparent;">
  <%for (let games in data[sport][gender]["UpcomingGames"]) { %>
-<p> <%=gender%> <%=sport%>: <%=data[sport][gender]["UpcomingGames"][games]%> </p>
-<p style = "position: center; color:red;"><%=data[sport][gender]["GameInfo"][games]%></p>
+<p style = "font-family: Georgia;"> <%=gender%> <%=sport%>: <%=data[sport][gender]["UpcomingGames"][games]%> </p>
+<p style = "position: center; color:red;font-family: Georgia;"><%=data[sport][gender]["GameInfo"][games]%></p>
+<p style = "position: center; color:blue; font-family: Georgia; font-weight:bold;"><%=data[sport][gender]["scores"][games]%></p>
 </br></br>
 <% } %>
 </div>
@@ -86,8 +90,8 @@
 <%}else{ %>
   <style>
   .login {
-    width:1500px;
-    height: 1500px;
+    width:100%;
+    height:100% ;
     background: red;
     position: relative;
     animation-name: login;

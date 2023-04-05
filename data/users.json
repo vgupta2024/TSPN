@@ -28,9 +28,5 @@
     "displayName": "jtrac52",
     "privileges": "Captain",
     "sport": "Baseball"
-  },
-  "zeno.steffens24@trinityschoolnyc.org": {
-    "displayName": "zeno.steffens24",
-    "privileges": ["user"]
   }
 }
