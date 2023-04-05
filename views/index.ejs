@@ -26,13 +26,13 @@
     <source src= "/videos/<%=videoNames[video]['filename']%>" type="video/mp4"/>
   </video>
     <%  if (userData[user._json.email]["privileges"].includes('admin')) { %>
-  <h5 style = "font-size: 2em;"><a href="/HighlightDelete/<%=videoNames[video]["filename"] %>"><i class="material-icons"">&times;</i></a> </h5>
+  <h5 style = "font-size: 2em;"><a href="/highlights/HighlightDelete/<%=videoNames[video]["filename"] %>"><i class="material-icons"">&times;</i></a> </h5>
 <% }} %>
 <br><br><br><br>
 <% for (image in imageNames) { %>
   <img src= "/images/<%=imageNames[image]['filename']%>" alt="<%=imageNames[image]['originalName']%>" width = "400" height = "400"/>
   <%  if (userData[user._json.email]["privileges"].includes('admin')) { %>
-    <h5 style = "font-size: 2em;"><a href="/ImageDelete/<%=imageNames[image]["filename"] %>"><i class="material-icons"">&times;</i></a> </h5>
+    <h5 style = "font-size: 2em;"><a href="/highlights/ImageDelete/<%=imageNames[image]["filename"] %>"><i class="material-icons"">&times;</i></a> </h5>
 <% }} %>
 <br>
  <h1 class = "mainText"> UPCOMING GAMES </h1>
