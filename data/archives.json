@@ -26,8 +26,8 @@
   },
   "Water Polo": {
     "Co-ed": {
-    "Championships": 0
-  }
+      "Championships": 0
+    }
   },
   "Basketball": {
     "Boys": {
@@ -39,13 +39,13 @@
   },
   "Baseball": {
     "Boys":{
-    "Championships": 0
-  }
+      "Championships": 0
+    }
   },
   "Softball": {
     "Girls":{
-    "Championships": 0
-  }
+      "Championships": 0
+    }
   },
   "Soccer": {
     "Boys": {
@@ -53,17 +53,18 @@
     },
     "Girls": {
       "Championships": 0
+    }
+  },
+  "Swim": {
+    "Boys": {
+      "Championships": 0
     },
-    "Swim": {
-      "Boys": {
-        "Championships": 0
-      },
-      "Girls": {
-        "Championships": 0
-      }
-    },
-    "Wrestling": {
-      "Boys": {
+    "Girls": {
+      "Championships": 0
+    }
+  },
+  "Wrestling": {
+    "Boys": {
       "Championships": 0
     }
   },
@@ -77,13 +78,13 @@
   },
   "Golf": {
     "Co-ed":{
-    "Championships": 0
-  }
+      "Championships": 0
+    }
   },
   "Track and Field": {
     "Co-ed":{
-    "Championships": 0
-  }
+      "Championships": 0
+    }
   },
   "Lacrosse": {
     "Boys": {
