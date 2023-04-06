@@ -5,15 +5,7 @@
 
 
 <form action="/sport/result" method="POST">
-  <label for="sportteam"> Which Sport?:</label>
-  <select id="sport" name="sport">
-    <% for(let sport in data){ %>
-      <% for(let team in data[sport]){ %>
-        <% if((userData[user._json.email]["sport"] == sport)||(userData[user._json.email]["sport"] == 'admin')) { %>
-      <option value="<%=sport%> <%=team%>"><%=sport%> <%=team%></option>
-      <%}}}%>
-    </select>
-    </br></br></br>
+
     <label for="upcominggames"> Which Game?:</label>
     <select id="game" name="game">
 

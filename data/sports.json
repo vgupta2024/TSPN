@@ -1,1 +1,286 @@
-{"Cross Country":{"Boys":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Fall"},"Girls":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Fall"}},"Volleyball":{"Boys Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Spring"},"Girls Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Fall"},"Girls JV":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Fall"}},"Tennis":{"Boys Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Spring"},"Girls Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Fall"},"Girls JV":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Fall"},"Boys JV":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Spring"}},"Water Polo":{"Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Fall"}},"Basketball":{"Boys Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Winter"},"Girls Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Winter"},"Girls JV":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Winter"},"Boys JV":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Winter"},"Boys Freshman":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Winter"}},"Baseball":{"Boys Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Spring"},"Boys JV":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Spring"}},"Softball":{"Girls Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Spring"},"Girls JV":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Spring"}},"Soccer":{"Boys Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Fall"},"Girls Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Fall"},"Boys JV":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Fall"},"Girls JV":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Fall"}},"Swim":{"Boys":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Winter"},"Girls":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Winter"}},"Wrestling":{"Boys":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Winter"}},"Indoor Track and Field":{"Boys":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Winter"},"Girls":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Winter"}},"Golf":{"Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Spring"}},"Track and Field":{"Varsity":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Spring"}},"Lacrosse":{"Boys":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Spring"},"Girls":{"Wins":0,"Losses":0,"UpcomingGames":[],"GameInfo":[],"scores":[],"Season":"Spring"}}}
+{
+  "Cross Country": {
+    "Boys": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Fall"
+    },
+    "Girls": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Fall"
+    }
+  },
+  "Volleyball": {
+    "Boys Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Spring"
+    },
+    "Girls Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Fall"
+    },
+    "Girls JV": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Fall"
+    }
+  },
+  "Tennis": {
+    "Boys Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Spring"
+    },
+    "Girls Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Fall"
+    },
+    "Girls JV": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Fall"
+    },
+    "Boys JV": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Spring"
+    }
+  },
+  "Water Polo": {
+    "Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Fall"
+    }
+  },
+  "Basketball": {
+    "Boys Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Winter"
+    },
+    "Girls Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Winter"
+    },
+    "Girls JV": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Winter"
+    },
+    "Boys JV": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Winter"
+    },
+    "Boys Freshman": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Winter"
+    }
+  },
+  "Baseball": {
+    "Boys Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Spring"
+    },
+    "Boys JV": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Spring"
+    }
+  },
+  "Softball": {
+    "Girls Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Spring"
+    },
+    "Girls JV": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Spring"
+    }
+  },
+  "Soccer": {
+    "Boys Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Fall"
+    },
+    "Girls Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Fall"
+    },
+    "Boys JV": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Fall"
+    },
+    "Girls JV": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Fall"
+    }
+  },
+  "Swim": {
+    "Boys": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Winter"
+    },
+    "Girls": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Winter"
+    }
+  },
+  "Wrestling": {
+    "Boys": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Winter"
+    }
+  },
+  "Indoor Track and Field": {
+    "Boys": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Winter"
+    },
+    "Girls": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Winter"
+    }
+  },
+  "Golf": {
+    "Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Spring"
+    }
+  },
+  "Track and Field": {
+    "Varsity": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Spring"
+    }
+  },
+  "Lacrosse": {
+    "Boys": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Spring"
+    },
+    "Girls": {
+      "Wins": 0,
+      "Losses": 0,
+      "UpcomingGames": [],
+      "GameInfo": [],
+      "scores": [],
+      "Season": "Spring"
+    }
+  }
+}
