@@ -50,16 +50,23 @@ router.get('/sport/result', async function(request, response) {
 router.post('/sport/result', function(request, response) {
         let trinity = request.body.Trinity;
         let opponent = request.body.Opponent;
-        let sport = request.body.sport;
         let upcomingGame = request.body.game;
+        let arraySport = upcomingGame.split(" ");
+        let sport = [];
+        let sportteam;
+        for (let i = 0; i < arraySport.length - 1; i++) {
+        sport[i] =  arraySport[i];
+        }
+      sportteam = sport.join(" ");
         let sports = Sport.getAllSports();
         let gender;
         let team;
         for (let sportTeam in sports) {
           for (let genders in sports[sportTeam]) {
-          if (sport == sportTeam + " " + genders) {
+          if (sportteam == sportTeam + " " + genders) {
         gender = genders;
         team = sportTeam;
+
       }
     }
   }
