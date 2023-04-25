@@ -131,6 +131,21 @@ router.get('/sport/removeSport', function(request, response) {
     });
 });
 
+router.get('/sport/scoreboard', function(request, response) {
+    let sports = Sport.getAllSports();
+      let userData = User.getUsers();
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("sports/scoreboard", {
+      data: sports,
+      user: request.user,
+      userData: userData,
+      displayName: userData[request.user._json.email]['displayName']
+
+    });
+});
+
+
 router.post('/sport/removeSport', function(request, response) {
         let game = request.body.game;
         console.log(game);

@@ -61,7 +61,6 @@ router.get('/auth/google/callback',
     failureRedirect: '/error?code=401'
   }),
   function(request, response) {
-    console.log("PROFILE:" + userProfile);
     let userID = request.user._json.email;
     let sports = Sport.getAllSports();
     let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));

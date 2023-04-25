@@ -1,0 +1,48 @@
+<%- include('../partials/header', {title:"TSPN"}, {data: data}, {userData: userData} ) -%>
+<script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+
+  <div id="messages">
+   <h3>Messages</h3>
+   <textarea id="messagesDisplay" name="story"
+          rows="20" cols="50">
+  </textarea><br>
+  <input type="text" id="messageInput"><button type="button" id="sendButton">Send</button><br>
+
+  </div>
+  <span id="numClientsDisplay">Participants: 0</span>
+  <script>
+    let socket = io.connect('/');//the default namespace
+    socket.emit('connectionEvent', {displayName:'<%=displayName%>'});
+    socket.on('announcement', function(data) {
+        console.log(data.displayName)
+        let mDisplay = document.getElementById('messagesDisplay');
+        let text ="";
+        if(data.displayName) {
+           text =data.displayName +": "+data.score+"\n";
+           mDisplay.value +=text;
+         }
+        else {
+           text = data.score+"\n";
+        mDisplay.value +=text;
+      }
+    });
+
+    socket.on('connectionEvent', function(data) {
+        //keep track of the current number of participants in the numClientsDisplay span
+        let numClientsDisplay = document.getElementById('numClientsDisplay');
+        let text = "Participants: " + data.numClients;
+        numClientsDisplay.innerText = text;
+        let mDisplay = document.getElementById('messagesDisplay');
+        text = data.displayName+":"+data.message+"\n";
+
+        mDisplay.value =  mDisplay.value+text;
+    });
+
+    document.getElementById("sendButton").addEventListener('click', function(){
+      let messageData = document.getElementById("messageInput").value;
+      console.log("sending: "+messageData);
+      socket.emit('announcement', { displayName:'<%=displayName%>', score: messageData });
+    });
+
+</script>
+<%- include('../partials/footer') -%>
