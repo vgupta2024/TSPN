@@ -1,4 +1,4 @@
-<%- include('../partials/header', {title:"TSPN"}, {data:data}, {userData: userData} ) -%>
+<%- include('../partials/header', {title:"TSPN"}, {data:data}, {userData: userData}, {dateToday: dateToday} ) -%>
 
 <% if (user) { %>
 <h2>Welcome, Admin <%=user._json.email.split("@")[0]%>!</h2>

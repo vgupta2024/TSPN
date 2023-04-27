@@ -8,8 +8,9 @@ io.on('connection', function(socket){
     socket.on('announcement', function(data) {
       console.log('announcement:', data);
       io.emit('announcement', {
-        displayName: data.displayName,
-        score: data.score
+        homeScore: data.homeScore,
+        awayScore: data.awayScore,
+        sport: data.sport
       });
     });
 
@@ -17,8 +18,10 @@ io.on('connection', function(socket){
       console.log('connection:', data.displayName);
       io.emit('connectionEvent', {
           displayName:data.displayName,
+          homeScore: data.homeScore,
+          awayScore: data.awayScore,
           numClients: io.engine.clientsCount,
-          message: 'Welcome to the live scoreboard feature!'
+          message: 'Welcome to the Live Scoreboard Feature '
       });
     });
 

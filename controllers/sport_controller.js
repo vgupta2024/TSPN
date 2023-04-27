@@ -3,12 +3,30 @@ const fs = require('fs');
 const multer = require('multer');
   router = express.Router();
   const axios = require('axios');
+  const dateToday = new Date().toJSON().slice(6,10);
 
 const Sport = require('../models/sport_model');
 const User = require('../models/user_model');
 
 
 module.exports = router;
+
+router.get('/sport/:sport/scoreboard', function(request, response) {
+    let sports = Sport.getAllSports();
+    let sport = request.params.sport;
+      let userData = User.getUsers();
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render("sports/scoreboard", {
+      data: sports,
+      sport:sport,
+      user: request.user,
+      userData: userData,
+      dateToday: dateToday,
+      displayName: userData[request.user._json.email]['displayName']
+
+    });
+});
 
 router.get('/sport/addSport', function(request, response) {
     let sports = Sport.getAllSports();
@@ -18,7 +36,8 @@ router.get('/sport/addSport', function(request, response) {
     response.render("sports/addSport", {
       data: sports,
       user: request.user,
-      userData: userData
+      userData: userData,
+      dateToday: dateToday
 
     });
 });
@@ -43,7 +62,8 @@ router.get('/sport/result', async function(request, response) {
       data: sports,
       user: request.user,
       userData: userData,
-      time: timeData
+      time: timeData,
+      dateToday: dateToday,
     });
 });
 
@@ -126,24 +146,13 @@ router.get('/sport/removeSport', function(request, response) {
     response.render("sports/removeSport", {
       data: sports,
       user: request.user,
+      dateToday: dateToday,
       userData: userData
 
     });
 });
 
-router.get('/sport/scoreboard', function(request, response) {
-    let sports = Sport.getAllSports();
-      let userData = User.getUsers();
-    response.status(200);
-    response.setHeader('Content-Type', 'text/html')
-    response.render("sports/scoreboard", {
-      data: sports,
-      user: request.user,
-      userData: userData,
-      displayName: userData[request.user._json.email]['displayName']
 
-    });
-});
 
 
 router.post('/sport/removeSport', function(request, response) {
@@ -202,6 +211,7 @@ router.get('/sport/:sport', async function(request, response) {
       sport: sport,
       user: request.user,
         userData: userData,
+        dateToday: dateToday,
         videoNames: videoNames,
         imageNames: imageNames,
         time: timeData

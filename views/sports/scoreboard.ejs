@@ -1,15 +1,39 @@
-<%- include('../partials/header', {title:"TSPN"}, {data: data}, {userData: userData} ) -%>
+<%- include('../partials/header', {title:"TSPN"}, {data: data}, {userData: userData}, {dateToday: dateToday} ) -%>
 <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
 
-
-    <label for="trinityScore" style = "position: relative; left: calc(100vw / 3);"> Trinity Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="homeScore" value="0">
+<h1> <%=sport%> Game On <%=dateToday%> </h1>
+  <h2 id = "nameDisplay" style = "font-family: Georgia; font-weight: bold; text-align: center;"></h2>
+  <br><br><br>
+    <label for="trinityScore" style = "position: relative; left: calc(100vw / 3);"> Trinity Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="trinityScore" value="0">
     <label for="awayScore" style = "position: relative; left: calc(100vw /3);"> Away Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="awayScore" value="0">
+    </br></br> <button type="button" style = "position: relative; left: calc(100vw /2.15);" value="sendButton" id = "sendButton"> Update Score </button>
+
+    <style>
+      .homeText {
+        font-family: Georgia;
+        font-weight: bold;
+        padding: 10px;
+        border: 1px solid blue;
+        text-align: center;
+        background-color: gold;
+      }
+      .awayText {
+        font-family: Georgia;
+        font-weight: bold;
+        padding: 10px;
+        border: 1px solid black;
+        text-align: center;
+        background-color: red;
+      }
+      </style>
+<h1 class = "homeText" id = "home" style = "position: relative; left: calc(100vw / 3);"> 0 </h1><h1 class = "awayText" id = "away" style = "position: relative; left: calc(100vw / 2);"> 0 </h1>
   <div id="messages">
+
    <h3>Messages</h3>
    <textarea id="messagesDisplay" name="story"
           rows="20" cols="50">
   </textarea><br>
-  <input type="text" id="messageInput"><button type="button" id="sendButton">Send</button><br>
+  <input type="text" id="messageInput"><button type="button" id="send">Send</button><br>
 
   </div>
   <span id="numClientsDisplay">Participants: 0</span>
@@ -17,16 +41,11 @@
     let socket = io.connect('/');//the default namespace
     socket.emit('connectionEvent', {displayName:'<%=displayName%>'});
     socket.on('announcement', function(data) {
-        console.log(data.displayName)
-        let mDisplay = document.getElementById('messagesDisplay');
-        let text ="";
-        if(data.displayName) {
-           text =data.displayName +": "+data.score+"\n";
-           mDisplay.value +=text;
-         }
-        else {
-           text = data.score+"\n";
-        mDisplay.value +=text;
+        let homeScore = document.getElementById('home');
+        let awayScore = document.getElementById('away');
+        if (data.sport == "<%=sport%>") {
+        homeScore.innerText = data.homeScore;
+        awayScore.innerText = data.awayScore;
       }
     });
 
@@ -35,16 +54,17 @@
         let numClientsDisplay = document.getElementById('numClientsDisplay');
         let text = "Participants: " + data.numClients;
         numClientsDisplay.innerText = text;
-        let mDisplay = document.getElementById('messagesDisplay');
-        text = data.displayName+":"+data.message+"\n";
+        let mDisplay = document.getElementById('nameDisplay');
+        text = data.message + data.displayName + "!";
 
-        mDisplay.value =  mDisplay.value+text;
+        mDisplay.innerText = text;
     });
 
     document.getElementById("sendButton").addEventListener('click', function(){
-      let messageData = document.getElementById("messageInput").value;
-      console.log("sending: "+messageData);
-      socket.emit('announcement', { displayName:'<%=displayName%>', score: messageData });
+      let homeScore = document.getElementById("trinityScore").value;
+        let awayScore = document.getElementById("awayScore").value;
+      console.log("sending: "+ homeScore + "VS" + awayScore );
+      socket.emit('announcement', {sport: "<%=sport%>", homeScore: homeScore, awayScore: awayScore} );
     });
 
 </script>

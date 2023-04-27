@@ -2,6 +2,7 @@ const express = require('express'),
   router = express.Router();
 const fs = require('fs');
 const axios = require('axios');
+const dateToday = new Date().toJSON().slice(6,10);
 
 const Sport = require('../models/sport_model')
 const User = require('../models/user_model')
@@ -17,6 +18,7 @@ router.get('/updatedIndex', function(request, response) {
     response.setHeader('Content-Type', 'text/html')
     response.render("UpdatedIndex", {
     data: sports,
+    dateToday: dateToday,
     user: request.user,
     userData: userData,
     videoNames: videoNames,
@@ -26,6 +28,7 @@ router.get('/updatedIndex', function(request, response) {
 });
 
 router.get('/', function(request, response) {
+  console.log(dateToday) ;
   let sports = Sport.getAllSports();
     let userData = User.getUsers();
     let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
@@ -34,6 +37,7 @@ router.get('/', function(request, response) {
   response.setHeader('Content-Type', 'text/html')
   response.render("index", {
   data: sports,
+  dateToday: dateToday,
   user: request.user,
   userData: userData,
   videoNames: videoNames,
@@ -49,6 +53,7 @@ router.get('/login', function(request, response) {
   response.setHeader('Content-Type', 'text/html')
   response.render("login", {
     user: request.user,
+    dateToday: dateToday,
     data: sports,
     userData: userData
   });
@@ -70,6 +75,7 @@ router.get('/error', function(request, response) {
   response.setHeader('Content-Type', 'text/html')
   response.render("error", {
     data: sports,
+    dateToday: dateToday,
     user: request.user,
     "errorCode": errorCode,
     "details": errors[errorCode],
