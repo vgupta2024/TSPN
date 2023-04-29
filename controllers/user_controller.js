@@ -1,6 +1,7 @@
 const express = require('express'),
 router = express.Router();
 const fs = require('fs');
+  const dateToday = new Date().toJSON().slice(6,10);
 
 const Sport = require('../models/sport_model');
 const Archive = require('../models/archive_model');
@@ -61,7 +62,8 @@ router.get('/users', function(request, response) {
       data: data,
       user: request.user,
       userData: userData,
-      userAuthority: userAuthority
+      userAuthority: userAuthority,
+      dateToday: dateToday
     });
 });
 

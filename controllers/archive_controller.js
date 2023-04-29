@@ -1,6 +1,7 @@
 const express = require('express'),
 router = express.Router();
 const axios = require('axios');
+  const dateToday = new Date().toJSON().slice(6,10);
 
 const Sport = require('../models/sport_model');
 const Archive = require('../models/archive_model');
@@ -16,7 +17,8 @@ router.get('/archives', function(request, response) {
       archives: archives,
       data: data,
       user: request.user,
-        userData: userData
+        userData: userData,
+        dateToday:dateToday
     });
 });
 
