@@ -11,15 +11,27 @@ const User = require('../models/user_model');
 
 module.exports = router;
 
-router.get('/sport/:sport/scoreboard', function(request, response) {
+router.get('/sport/:sport/:gender/scoreboard', function(request, response) {
     let sports = Sport.getAllSports();
     let sport = request.params.sport;
+    let homeScore;
+    let awayScore;
+      let gender = request.params.gender;
       let userData = User.getUsers();
+      for (let games in sports[sport][gender]["UpcomingGames"]) {
+        if(sports[sport][gender]["UpcomingGames"][games].split("/")[0] == dateToday.split("-")[0] && sports[sport][gender]["UpcomingGames"][games].split("/")[1] == dateToday.split("-")[1]  ) {
+        homeScore = sports[sport][gender]["liveScores"][games].split("-")[0];
+        awayScore = sports[sport][gender]["liveScores"][games].split("-")[1];
+      }
+    }
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("sports/scoreboard", {
       data: sports,
       sport:sport,
+      homeScore: homeScore,
+      awayScore: awayScore,
+      gender:gender,
       user: request.user,
       userData: userData,
       dateToday: dateToday,
@@ -132,6 +144,7 @@ console.log(sport)
 sports[sport][gender]["UpcomingGames"].push(date);
 sports[sport][gender]["GameInfo"].push(" ");
 sports[sport][gender]["scores"].push(" ");
+sports[sport][gender]["liveScores"].push(" ");
     fs.writeFileSync('data/sports.json', JSON.stringify(sports));
       response.redirect("/");
 
@@ -180,6 +193,7 @@ let index = sports[sport][team]["UpcomingGames"].indexOf(date);
   sports[sport][team]["UpcomingGames"].splice(index,1);
   sports[sport][team]["GameInfo"].splice(index,1);
   sports[sport][team]["scores"].splice(index,1);
+  sports[sport][team]["liveScores"].splice(index,1);
     fs.writeFileSync('data/sports.json', JSON.stringify(sports));
       response.redirect("/");
 

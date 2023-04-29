@@ -1,16 +1,27 @@
 const io = require( "socket.io" )();
+const Sport = require('../models/sport_model');
+const dateToday = new Date().toJSON().slice(6,10);
+const fs = require('fs');
 const socketapi = {
     io: io
 };
 
 io.on('connection', function(socket){
-
+    let sports = Sport.getAllSports();
     socket.on('announcement', function(data) {
-      console.log('announcement:', data);
+    console.log(sports[data.sport][data.gender]["UpcomingGames"]);
+      for (let games in sports[data.sport][data.gender]["UpcomingGames"]) {
+        if(sports[data.sport][data.gender]["UpcomingGames"][games].split("/")[0] == dateToday.split("-")[0] && sports[data.sport][data.gender]["UpcomingGames"][games].split("/")[1] == dateToday.split("-")[1]  ){
+        sports[data.sport][data.gender]["liveScores"][games] = data.homeScore + "-" + data.awayScore;
+      console.log('announcement of me:', data);
+    }
+  }
+  fs.writeFileSync('data/sports.json', JSON.stringify(sports));
       io.emit('announcement', {
         homeScore: data.homeScore,
         awayScore: data.awayScore,
-        sport: data.sport
+        sport: data.sport,
+        gender: data.gender
       });
     });
 

@@ -15,7 +15,7 @@
               <% if(data[sport][team]["UpcomingGames"].length > 0) { %>
                 <% for (games in data[sport][team]["UpcomingGames"]) { %>
                 <% if(data[sport][team]["UpcomingGames"][games].split("/")[0] == dateToday.split("-")[0] && data[sport][team]["UpcomingGames"][games].split("/")[1] == dateToday.split("-")[1]  ){ %>
-            <li><a class="dropdown-item" style="color:blue;" href= "/sport/<%=sport%>/scoreboard"><%=sport%> Game</a></li>
+            <li><a class="dropdown-item" style="color:blue;" href= "/sport/<%=sport%>/<%=team%>/scoreboard"><%=team%><%=sport%> Game</a></li>
             <%break%>
             <%}}}}}%>
           </ul>

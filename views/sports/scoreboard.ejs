@@ -1,11 +1,12 @@
 <%- include('../partials/header', {title:"TSPN"}, {data: data}, {userData: userData}, {dateToday: dateToday} ) -%>
 <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
 
-<h1> <%=sport%> Game On <%=dateToday%> </h1>
   <h2 id = "nameDisplay" style = "font-family: Georgia; font-weight: bold; text-align: center;"></h2>
+  <h1 style = "font-family: Georgia; text-align: center;"> <%=sport%> Game On <%=dateToday%> </h1>
+  <br>
   <br><br><br>
-    <label for="trinityScore" style = "position: relative; left: calc(100vw / 3);"> Trinity Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="trinityScore" value="0">
-    <label for="awayScore" style = "position: relative; left: calc(100vw /3);"> Away Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="awayScore" value="0">
+    <label for="trinityScore" style = "position: relative; left: calc(100vw / 3);"> Trinity Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="trinityScore" value="<%=homeScore%>">
+    <label for="awayScore" style = "position: relative; left: calc(100vw /3);"> Away Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="awayScore" value="<%=awayScore%>">
     </br></br> <button type="button" style = "position: relative; left: calc(100vw /2.15);" value="sendButton" id = "sendButton"> Update Score </button>
 
     <style>
@@ -26,17 +27,9 @@
         background-color: red;
       }
       </style>
-<h1 class = "homeText" id = "home" style = "position: relative; left: calc(100vw / 3);"> 0 </h1><h1 class = "awayText" id = "away" style = "position: relative; left: calc(100vw / 2);"> 0 </h1>
-  <div id="messages">
+<h1 class = "homeText" id = "home" style = "position: relative; left: calc(100vw / 3);"> <%=homeScore%> </h1><h1 class = "awayText" id = "away" style = "position: relative; left: calc(100vw / 2);"> <%=awayScore%> </h1>
 
-   <h3>Messages</h3>
-   <textarea id="messagesDisplay" name="story"
-          rows="20" cols="50">
-  </textarea><br>
-  <input type="text" id="messageInput"><button type="button" id="send">Send</button><br>
-
-  </div>
-  <span id="numClientsDisplay">Participants: 0</span>
+  <span id="numClientsDisplay"> Fans Watching: 0</span>
   <script>
     let socket = io.connect('/');//the default namespace
     socket.emit('connectionEvent', {displayName:'<%=displayName%>'});
@@ -52,7 +45,7 @@
     socket.on('connectionEvent', function(data) {
         //keep track of the current number of participants in the numClientsDisplay span
         let numClientsDisplay = document.getElementById('numClientsDisplay');
-        let text = "Participants: " + data.numClients;
+        let text = "Fans Watching: " + data.numClients;
         numClientsDisplay.innerText = text;
         let mDisplay = document.getElementById('nameDisplay');
         text = data.message + data.displayName + "!";
@@ -64,7 +57,7 @@
       let homeScore = document.getElementById("trinityScore").value;
         let awayScore = document.getElementById("awayScore").value;
       console.log("sending: "+ homeScore + "VS" + awayScore );
-      socket.emit('announcement', {sport: "<%=sport%>", homeScore: homeScore, awayScore: awayScore} );
+      socket.emit('announcement', {gender: "<%=gender%>", sport: "<%=sport%>", homeScore: homeScore, awayScore: awayScore} );
     });
 
 </script>

@@ -3,6 +3,7 @@ const fs = require('fs');
 const multer = require('multer');
   router = express.Router();
   const axios = require('axios');
+  const dateToday = new Date().toJSON().slice(6,10);
 
 const Sport = require('../models/sport_model');
 const User = require('../models/user_model');
@@ -147,7 +148,8 @@ router.get('/highlights/uploadText', function(request, response) {
     response.render("highlights/uploadText", {
       data: sports,
       user: request.user,
-      userData: userData
+      userData: userData,
+      dateToday: dateToday
 
     });
 });
