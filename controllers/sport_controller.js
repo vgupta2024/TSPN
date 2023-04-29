@@ -144,7 +144,7 @@ console.log(sport)
 sports[sport][gender]["UpcomingGames"].push(date);
 sports[sport][gender]["GameInfo"].push(" ");
 sports[sport][gender]["scores"].push(" ");
-sports[sport][gender]["liveScores"].push(" ");
+sports[sport][gender]["liveScores"].push("0-0");
     fs.writeFileSync('data/sports.json', JSON.stringify(sports));
       response.redirect("/");
 
