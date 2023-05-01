@@ -11,6 +11,7 @@
   <select id="privileges" name="privileges">
     <option value="admin">Admin</option>
     <% for (sports in data) { %>
+      <option value="<%=sports%> Manager"> <%=sports%> Manager</option>
     <option value="<%=sports%> Captain"> <%=sports%> Captain</option>
     <%}%>
     </select>

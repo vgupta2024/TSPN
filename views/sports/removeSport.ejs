@@ -6,7 +6,7 @@
 
 <form action="/sport/removeSport" method="POST">
   <label for="sportteam"> Which Sport?:</label>
-  <select id="game" name="game">
+  <select id="game" name="game" required/>
     <% for(let sport in data){ %>
       <% for(let team in data[sport]){ %>
         <% for (let game in data[sport][team]["UpcomingGames"]) { %>

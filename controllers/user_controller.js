@@ -14,7 +14,7 @@ router.post('/users', function(request, response) {
         let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
         console.log(privilege);
         for (users in userAuthority) {
-        if (userEmail != users && privilege.split(" ").length > 1) {
+        if (userEmail != users && privilege.split(" ").indexOf("Captain") != -1) {
           let userArray = [];
 
         for (let i = 0; i < (privilege.split(" ").length - 1); i++) {
@@ -29,7 +29,24 @@ router.post('/users', function(request, response) {
           "privileges": ["user","Captain"],
           "sport": userString
         };
-      } else if (userEmail != users && privilege == 'admin') {
+      } else  if (userEmail != users && privilege.split(" ").indexOf("Manager") != -1) {
+        let userArray = [];
+
+      for (let i = 0; i < (privilege.split(" ").length - 1); i++) {
+      userArray.push(privilege.split(" ")[i]);
+      }
+
+      let userString  = userArray.join(" ");
+      console.log(userString);
+      userAuthority[userEmail] =
+      {
+        "displayName": userEmail.split("@")[0],
+        "privileges": ["user","Manager"],
+        "sport": userString
+      };
+
+
+    }else if (userEmail != users && privilege == 'admin') {
         console.log("hi");
         userAuthority[userEmail] =
         {
@@ -37,15 +54,18 @@ router.post('/users', function(request, response) {
           "privileges": ["user","admin"],
           "sport": "admin"
         };
-      } else if (userEmail == users && privilege.split(" ").length > 1) {
+      } else if (userEmail == users && privilege.split(" ").indexOf("Captain") != -1) {
         userAuthority[users]["privileges"] = privilege.split(" ")[1],
           userAuthority[users]["sport"] = privilege.split(" ")[0]
       } else if (userEmail == users && privilege == 'admin'){
         userAuthority[users]["privileges"] = "admin",
           userAuthority[users]["sport"] = "admin"
-      }
+      }else if (userEmail == users && privilege.split(" ").indexOf("Manager") != -1) {
+        userAuthority[users]["privileges"] = privilege.split(" ")[1],
+          userAuthority[users]["sport"] = privilege.split(" ")[0]
 
         }
+      }
           fs.writeFileSync('data/users.json', JSON.stringify(userAuthority));
           response.redirect("/");
 
