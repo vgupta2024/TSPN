@@ -11,7 +11,7 @@ io.on('connection', function(socket){
     socket.on('announcement', function(data) {
     console.log(sports[data.sport][data.gender]["UpcomingGames"]);
       for (let games in sports[data.sport][data.gender]["UpcomingGames"]) {
-        if(sports[data.sport][data.gender]["UpcomingGames"][games].split("/")[0] == dateToday.split("-")[0] && sports[data.sport][data.gender]["UpcomingGames"][games].split("/")[1] == dateToday.split("-")[1]  ){
+        if(parseInt(sports[data.sport][data.gender]["UpcomingGames"][games].split("/")[0]) == parseInt(dateToday.split("-")[0]) && parseInt(sports[data.sport][data.gender]["UpcomingGames"][games].split("/")[1]) == parseInt(dateToday.split("-")[1])  ){
         sports[data.sport][data.gender]["liveScores"][games] = data.homeScore + "-" + data.awayScore;
       console.log('announcement of me:', data);
     }

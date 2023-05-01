@@ -96,7 +96,8 @@ router.get('/highlights/uploadImages', function(request, response) {
     response.render("highlights/uploadImages", {
       data: sports,
       user: request.user,
-      userData: userData
+      userData: userData,
+      dateToday: dateToday
 
     });
 });
@@ -109,7 +110,8 @@ router.get('/highlights/uploadHighlights', function(request, response) {
     response.render("highlights/uploadHighlights", {
       data: sports,
       user: request.user,
-      userData: userData
+      userData: userData,
+      dateToday: dateToday
 
     });
 });

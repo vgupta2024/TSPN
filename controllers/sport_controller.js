@@ -19,7 +19,7 @@ router.get('/sport/:sport/:gender/scoreboard', function(request, response) {
       let gender = request.params.gender;
       let userData = User.getUsers();
       for (let games in sports[sport][gender]["UpcomingGames"]) {
-        if(sports[sport][gender]["UpcomingGames"][games].split("/")[0] == dateToday.split("-")[0] && sports[sport][gender]["UpcomingGames"][games].split("/")[1] == dateToday.split("-")[1]  ) {
+        if(parseInt(sports[sport][gender]["UpcomingGames"][games].split("/")[0]) == parseInt(dateToday.split("-")[0]) && parseInt(sports[sport][gender]["UpcomingGames"][games].split("/")[1]) == parseInt(dateToday.split("-")[1]) ) {
         homeScore = sports[sport][gender]["liveScores"][games].split("-")[0];
         awayScore = sports[sport][gender]["liveScores"][games].split("-")[1];
       }
