@@ -7,6 +7,7 @@ const multer = require('multer');
 
 const Sport = require('../models/sport_model');
 const User = require('../models/user_model');
+const Activity = require('../models/activity_model');
 
 
 module.exports = router;
@@ -218,6 +219,9 @@ router.get('/sport/:sport', async function(request, response) {
     let sports = Sport.getAllSports();
     let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
     let imageNames = JSON.parse(fs.readFileSync(__dirname+'/../data/imageNames.json'));
+    Activity.addActivity(request.user._json.email, timeData, sport);
+    Activity.getAllActivity();
+
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("sports/team", {
