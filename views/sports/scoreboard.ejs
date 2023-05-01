@@ -5,14 +5,12 @@
   <h1 style = "font-family: Georgia; text-align: center;"> <%=sport%> Game On <%=dateToday%> </h1>
   <br>
   <br><br><br>
-  <% for (let sport in data) {%>
-    <% for(let team in data[sport]){ %>
-      <% for (let game in data[sport][team]["UpcomingGames"]) { %>
-    <% if((userData[user._json.email]["sport"]) == sport||(userData[user._json.email]["privileges"].includes('Manager'))){ %>
-    <label for="trinityScore" style = "position: relative; left: calc(100vw / 3);"> Trinity Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="trinityScore" value="<%=homeScore%>">
-    <label for="awayScore" style = "position: relative; left: calc(100vw /3);"> Away Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="awayScore" value="<%=awayScore%>">
+
+    <% if(((userData[user._json.email]["privileges"].includes('Scorekeeper')))){ %>
+    <label for="trinityScore" style = "position: relative; left: calc(100vw / 3);"> Trinity Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="trinityScore" min = "0" value="<%=homeScore%>">
+    <label for="awayScore" style = "position: relative; left: calc(100vw /3);"> Away Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="awayScore" min = "0" value="<%=awayScore%>">
     </br></br> <button type="button" style = "position: relative; left: calc(100vw /2.15);" value="sendButton" id = "sendButton"> Update Score </button>
- <%}}}} %>
+ <%} %>
     <style>
       .homeText {
         font-family: Georgia;

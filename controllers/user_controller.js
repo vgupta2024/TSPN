@@ -29,20 +29,13 @@ router.post('/users', function(request, response) {
           "privileges": ["user","Captain"],
           "sport": userString
         };
-      } else  if (userEmail != users && privilege.split(" ").indexOf("Manager") != -1) {
-        let userArray = [];
+      } else  if (userEmail != users && privilege.split(" ").indexOf("Scorekeeper") != -1) {
 
-      for (let i = 0; i < (privilege.split(" ").length - 1); i++) {
-      userArray.push(privilege.split(" ")[i]);
-      }
-
-      let userString  = userArray.join(" ");
-      console.log(userString);
       userAuthority[userEmail] =
       {
         "displayName": userEmail.split("@")[0],
-        "privileges": ["user","Manager"],
-        "sport": userString
+        "privileges": ["user","Scorekeeper"],
+        "sport": "Scorekeeper"
       };
 
 
@@ -60,9 +53,9 @@ router.post('/users', function(request, response) {
       } else if (userEmail == users && privilege == 'admin'){
         userAuthority[users]["privileges"] = "admin",
           userAuthority[users]["sport"] = "admin"
-      }else if (userEmail == users && privilege.split(" ").indexOf("Manager") != -1) {
-        userAuthority[users]["privileges"] = privilege.split(" ")[1],
-          userAuthority[users]["sport"] = privilege.split(" ")[0]
+      }else if (userEmail == users && privilege.split(" ").indexOf("Scorekeeper") != -1) {
+        userAuthority[users]["privileges"] = "Scorekeeper",
+            userAuthority[users]["sport"] = "Scorekeeper"
 
         }
       }
