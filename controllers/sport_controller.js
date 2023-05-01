@@ -219,7 +219,9 @@ router.get('/sport/:sport', async function(request, response) {
     let sports = Sport.getAllSports();
     let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
     let imageNames = JSON.parse(fs.readFileSync(__dirname+'/../data/imageNames.json'));
+    if(sport!="bootstrap-datepicker.XX.js"){
     Activity.addActivity(request.user._json.email, timeData, sport);
+  }
     Activity.getAllActivity();
 
     response.status(200);

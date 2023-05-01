@@ -15,7 +15,7 @@ db.all('SELECT * FROM usage', function(err, rows){
 });
 }
 
-exports.addActivity =  function(id, userID, time, sport) {
+exports.addActivity =  function(userID, time, sport) {
   db.run("INSERT INTO usage (user, created_at, sport) VALUES (?,?,?)",
     userID, time, sport,
     function(err) {
