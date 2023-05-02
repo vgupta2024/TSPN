@@ -12,6 +12,7 @@ db.all('SELECT * FROM usage', function(err, rows){
   	console.log('********USAGE TABLE**********');
     console.log(rows);
   }
+  return rows
 });
 }
 
