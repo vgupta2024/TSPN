@@ -6,21 +6,28 @@
 
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 
-<div id="myPlot" style="width:100%;max-width:700px"></div>
+<div id="myPlot" style="width:100%; height: 100%"></div>
 <script>
-  console.log('<%=xAxis%>');
-  console.log('<%=yAxis%>');
+
+ let x;
+x = [<% for (sports in xAxis) { %> <% if (xAxis[sports] != "Lacrosse") { %> '<%=xAxis[sports]%>', <% } else { %>  '<%=xAxis[sports]%>' <% } %>  <% } %>]
+
   var data = [
   {
-    x: ['<%=xAxis%>'],
-    y: ['<%=yAxis%>'],
+    x: x,
+    y: [ <% for (values in yAxis) { %>
+      <%=yAxis[values]%>,
+      <% } %>
+    ],
     type: "bar"
   }
 ];
 var layout = {
   title: "User Activity",
+  height: 800,
+  width:  1200,
   xaxis: {tickfont: {
-      size: 15,
+      size: 13,
       color: "rgb(0,0,128)",
       title: "Sports",
       tickangle: -45
