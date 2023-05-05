@@ -6,7 +6,7 @@
   <br>
   <br><br><br>
 
-    <% if(((userData[user._json.email]["privileges"].includes('Scorekeeper')))){ %>
+    <% if(userData[user._json.email]["privileges"].includes('Scorekeeper') ||userData[user._json.email]["privileges"].includes('admin') ){ %>
     <label for="trinityScore" style = "position: relative; left: calc(100vw / 3);"> Trinity Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="trinityScore" min = "0" value="<%=homeScore%>">
     <label for="awayScore" style = "position: relative; left: calc(100vw /3);"> Away Score:</label><input style = "position: relative; left: calc(100vw / 3);" type="number" id="awayScore" min = "0" value="<%=awayScore%>">
     </br></br> <button type="button" style = "position: relative; left: calc(100vw /2.15);" value="sendButton" id = "sendButton"> Update Score </button>
@@ -33,7 +33,7 @@
 </br>
 <h1 class = "homeText" id = "home" style = "position: relative; left: calc(100vw / 2.85);">  <%=homeScore%> </h1><h1 class = "awayText" id = "away" style = "position: relative; left: calc(100vw / 1.9);"> <%=awayScore%> </h1>
 </br></br>
-<label for = "homeText" style = "position: relative; left: calc(100vw / 3);" > TRINITY </label> <label for = "awayText" style = "position: relative; left: calc(100vw / 2);"> AWAY </label>
+<label for = "homeText" style = "position: relative; left: calc(100vw / 3);" > TRINITY </label> <label for = "awayText" style = "position: relative; left: calc(100vw / 1.99);"> AWAY </label>
   <span id="numClientsDisplay"> Fans Watching: 0</span>
   <script>
     let socket = io.connect('/');//the default namespace
