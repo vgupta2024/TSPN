@@ -9,8 +9,6 @@ db.all('SELECT * FROM usage', function(err, rows){
   if(err){
     console.log(err);
   } else {
-  	console.log('********USAGE TABLE**********');
-    console.log(rows);
   }
   return rows
 });
