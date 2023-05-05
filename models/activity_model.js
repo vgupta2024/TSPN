@@ -4,13 +4,13 @@ var db = new sqlite3.Database(__dirname+'/../data/activity.db');
 db.run("PRAGMA foreign_keys = ON;");
 
 
-exports.getAllActivity =  function() {
+exports.getAllActivity =  function(callback) {
 db.all('SELECT * FROM usage', function(err, rows){
   if(err){
     console.log(err);
   } else {
   }
-  return rows
+  callback(rows);
 });
 }
 

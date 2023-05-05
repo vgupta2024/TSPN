@@ -13,7 +13,10 @@ router.get('/activity', function(request, response) {
     let data = Sport.getAllSports();
     let userData = User.getUsers();
     let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
-    let activityData = Activity.getAllActivity();
+    let activityData = Activity.getAllActivity(function(rows) {
+      return rows;
+      console.log(rows);
+    });
     console.log(activityData);
     let xAxis=["Cross Country", "Volleyball", "Tennis", "Water Polo", "Soccer", "Basketball", "Swim", "Wrestling", "Indoor Track and Field", "Volleyball", "Tennis", "Baseball", "Softball", "Golf", "Track and Field", "Lacrosse"];
     let yAxis =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];

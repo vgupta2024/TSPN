@@ -222,8 +222,6 @@ router.get('/sport/:sport', async function(request, response) {
     if(sport!="bootstrap-datepicker.XX.js"){
     Activity.addActivity(request.user._json.email, timeData, sport);
   }
-    Activity.getAllActivity();
-
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
     response.render("sports/team", {
