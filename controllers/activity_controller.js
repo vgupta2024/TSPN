@@ -16,21 +16,16 @@ router.get('/activity', function(request, response) {
     let activityData;
 
     Activity.getAllActivity(function(rows) {
-      console.log(rows);
     activityData = rows;
 
-    console.log(activityData);
     let xAxis=["Cross Country", "Volleyball", "Tennis", "Water Polo", "Soccer", "Basketball", "Swim", "Wrestling", "Indoor Track and Field", "Volleyball", "Tennis", "Baseball", "Softball", "Golf", "Track and Field", "Lacrosse"];
     let yAxis =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
     for(activity in activityData){
-      console.log(activityData[activity]);
       for(let i = 0; i <= xAxis.length; i++){
         if(activityData[activity]["sport"] == xAxis[i]){
-          console.log("here");
           yAxis[i]++;
       }
     }
-    console.log(yAxis);
   }
     response.status(200);
     response.setHeader('Content-Type', 'text/html')

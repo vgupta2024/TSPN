@@ -13,7 +13,6 @@ router.post('/users', function(request, response) {
         let userEmail = request.body.userEmail;
         let privilege = request.body.privileges;
         let userAuthority = JSON.parse(fs.readFileSync(__dirname+'/../data/users.json'));
-        console.log(privilege);
         for (users in userAuthority) {
         if (userEmail != users && privilege.split(" ").indexOf("Captain") != -1) {
           let userArray = [];
@@ -23,7 +22,6 @@ router.post('/users', function(request, response) {
         }
 
         let userString  = userArray.join(" ");
-        console.log(userString);
         userAuthority[userEmail] =
         {
           "displayName": userEmail.split("@")[0],
@@ -41,7 +39,6 @@ router.post('/users', function(request, response) {
 
 
     }else if (userEmail != users && privilege == 'admin') {
-        console.log("hi");
         userAuthority[userEmail] =
         {
           "displayName": userEmail.split("@")[0],

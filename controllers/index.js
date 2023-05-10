@@ -29,7 +29,6 @@ router.get('/updatedIndex', function(request, response) {
 });
 
 router.get('/', function(request, response) {
-  console.log("DATE TODAY:" + dateToday) ;
   let sports = Sport.getAllSports();
     let userData = User.getUsers();
     let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));
