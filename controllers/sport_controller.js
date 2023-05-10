@@ -64,7 +64,6 @@ router.get('/sport/result', async function(request, response) {
       const resp = await axios.get('http://worldtimeapi.org/api/timezone/America/New_York');
       let time = resp["data"]["datetime"];
        timeData = time;
-      console.log(time);
     } catch (err) {
        console.error(err);
       time = "";
@@ -103,11 +102,6 @@ router.post('/sport/result', function(request, response) {
       }
     }
   }
-console.log(gender);
-console.log(team);
-console.log(trinity);
-console.log(opponent);
-
 if (parseInt(trinity) > parseInt(opponent)) {
 sports[team][gender]["Wins"] += 1;
 
@@ -127,7 +121,6 @@ router.post('/sport/addSport', function(request, response) {
         let game = request.body.sport;
         let dateInitial = request.body.date;
         let date = parseInt(dateInitial.split("-")[1]) + "/" + parseInt(dateInitial.split("-")[2]);
-        console.log(date);
         let sports = Sport.getAllSports();
         let gender;
         let sport;
@@ -139,8 +132,6 @@ router.post('/sport/addSport', function(request, response) {
       }
     }
   }
-console.log(gender);
-console.log(sport)
 
 sports[sport][gender]["UpcomingGames"].push(date);
 sports[sport][gender]["GameInfo"].push(" ");
@@ -171,7 +162,6 @@ router.get('/sport/removeSport', function(request, response) {
 
 router.post('/sport/removeSport', function(request, response) {
         let game = request.body.game;
-        console.log(game);
         let sports = Sport.getAllSports();
         let team;
         let sport;
@@ -187,9 +177,6 @@ router.post('/sport/removeSport', function(request, response) {
     }
   }
 }
-console.log(team);
-console.log(sport)
-console.log(sports[sport][team]["UpcomingGames"].indexOf(date));
 let index = sports[sport][team]["UpcomingGames"].indexOf(date);
   sports[sport][team]["UpcomingGames"].splice(index,1);
   sports[sport][team]["GameInfo"].splice(index,1);
@@ -210,7 +197,6 @@ router.get('/sport/:sport', async function(request, response) {
     const resp = await axios.get('http://worldtimeapi.org/api/timezone/America/New_York');
     let time = resp["data"]["datetime"];
      timeData = time;
-    console.log(time);
   } catch (err) {
      console.error(err);
     time = "";

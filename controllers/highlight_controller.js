@@ -46,7 +46,6 @@ router.post('/highlights/uploadHighlights', publicUpload.single('myFile'), (req,
   if(videoNum == 'undefined'){
     videoNum = 0;
   }
-  console.log(videoNum);
   let videos = Highlight.getAllVideos();
   videos[videoNum] = file;
   videos[videoNum]['sport'] = sport;
@@ -117,7 +116,6 @@ router.get('/highlights/uploadHighlights', function(request, response) {
 });
 
 router.get('/highlights/HighlightDelete/:videoName', function(request, response) {
-  console.log("delete");
     let video = request.params.videoName;
       let data = JSON.parse(fs.readFileSync('data/videoNames.json'));
       for(videoName in data){
@@ -131,7 +129,6 @@ router.get('/highlights/HighlightDelete/:videoName', function(request, response)
 
 router.get('/highlights/ImageDelete/:imageName', function(request, response) {
     let image = request.params.imageName;
-    console.log(image);
       let data = JSON.parse(fs.readFileSync('data/imageNames.json'));
       for(imageName in data){
       if (data[imageName]["filename"] == image) {

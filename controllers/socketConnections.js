@@ -9,11 +9,9 @@ const socketapi = {
 io.on('connection', function(socket){
     let sports = Sport.getAllSports();
     socket.on('announcement', function(data) {
-    console.log(sports[data.sport][data.gender]["UpcomingGames"]);
       for (let games in sports[data.sport][data.gender]["UpcomingGames"]) {
         if(parseInt(sports[data.sport][data.gender]["UpcomingGames"][games].split("/")[0]) == parseInt(dateToday.split("-")[0]) && parseInt(sports[data.sport][data.gender]["UpcomingGames"][games].split("/")[1]) == parseInt(dateToday.split("-")[1])  ){
         sports[data.sport][data.gender]["liveScores"][games] = data.homeScore + "-" + data.awayScore;
-      console.log('announcement of me:', data);
     }
   }
   fs.writeFileSync('data/sports.json', JSON.stringify(sports));
@@ -26,7 +24,6 @@ io.on('connection', function(socket){
     });
 
     socket.on('connectionEvent', function(data) {
-      console.log('connection:', data.displayName);
       io.emit('connectionEvent', {
           displayName:data.displayName,
           homeScore: data.homeScore,
