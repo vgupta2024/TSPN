@@ -1,7 +1,8 @@
 const express = require('express'),
 router = express.Router();
 const fs = require('fs');
-  const dateToday = new Date().toJSON().slice(6,10);
+const dateToday = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }).slice(0,4);
+
 
 const Sport = require('../models/sport_model');
 const Archive = require('../models/archive_model');

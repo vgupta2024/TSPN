@@ -3,7 +3,8 @@ const fs = require('fs');
 const multer = require('multer');
   router = express.Router();
   const axios = require('axios');
-  const dateToday = new Date().toJSON().slice(6,10);
+  const dateToday = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }).slice(0,4);
+
 
 const Sport = require('../models/sport_model');
 const User = require('../models/user_model');
@@ -20,8 +21,9 @@ router.get('/sport/:sport/:gender/scoreboard', function(request, response) {
       let gender = request.params.gender;
       let userData = User.getUsers();
       for (let games in sports[sport][gender]["UpcomingGames"]) {
-        if(parseInt(sports[sport][gender]["UpcomingGames"][games].split("/")[0]) == parseInt(dateToday.split("-")[0]) && parseInt(sports[sport][gender]["UpcomingGames"][games].split("/")[1]) == parseInt(dateToday.split("-")[1]) ) {
+        if(parseInt(sports[sport][gender]["UpcomingGames"][games].split("/")[0]) == parseInt(dateToday.split("/")[0]) && parseInt(sports[sport][gender]["UpcomingGames"][games].split("/")[1]) == parseInt(dateToday.split("/")[1]) ) {
         homeScore = sports[sport][gender]["liveScores"][games].split("-")[0];
+        console.log(homeScore);
         awayScore = sports[sport][gender]["liveScores"][games].split("-")[1];
       }
     }
@@ -127,7 +129,7 @@ router.post('/sport/addSport', function(request, response) {
         let game = request.body.sport;
         let dateInitial = request.body.date;
         let date = parseInt(dateInitial.split("-")[1]) + "/" + parseInt(dateInitial.split("-")[2]);
-        console.log(date);
+        console.log("CURRENT DATE:" +  date);
         let sports = Sport.getAllSports();
         let gender;
         let sport;

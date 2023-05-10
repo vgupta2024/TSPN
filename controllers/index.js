@@ -2,7 +2,8 @@ const express = require('express'),
   router = express.Router();
 const fs = require('fs');
 const axios = require('axios');
-const dateToday = new Date().toJSON().slice(6,10);
+const dateToday = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }).slice(0,4);
+
 
 const Sport = require('../models/sport_model')
 const User = require('../models/user_model')
@@ -28,7 +29,7 @@ router.get('/updatedIndex', function(request, response) {
 });
 
 router.get('/', function(request, response) {
-  console.log(dateToday) ;
+  console.log("DATE TODAY:" + dateToday) ;
   let sports = Sport.getAllSports();
     let userData = User.getUsers();
     let videoNames = JSON.parse(fs.readFileSync(__dirname+'/../data/videoNames.json'));

@@ -3,7 +3,7 @@ const fs = require('fs');
 const multer = require('multer');
   router = express.Router();
   const axios = require('axios');
-  const dateToday = new Date().toJSON().slice(6,10);
+  const dateToday = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }).slice(0,4);
 
 const Sport = require('../models/sport_model');
 const User = require('../models/user_model');
