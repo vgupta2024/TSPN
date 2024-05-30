@@ -27,7 +27,7 @@ router.use(passport.session());
 passport.use(new GoogleStrategy({
     clientID: KEYS["google-client-id"],
     clientSecret: KEYS["google-client-secret"],
-    callbackURL: "process.env.GOOGLE_REDIRECT_URI"
+    callbackURL: "https://afternoon-coast-42067.herokuapp.com/auth/google/callback"
     //todo: port==process.env.PORT? :
   },
   function(accessToken, refreshToken, profile, done) {
