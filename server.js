@@ -27,7 +27,7 @@ app.use(require('./controllers/activity_controller'));
 
 
 //..............Start the server...............................//
-const port = process.env.PORT || 51654;
+const port = process.env.PORT || 3000;
 app.set('port', port); //let heroku pick the port if needed
 
 let socketapi =require('./controllers/socketConnections');

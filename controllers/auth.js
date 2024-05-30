@@ -27,7 +27,7 @@ router.use(passport.session());
 passport.use(new GoogleStrategy({
     clientID: KEYS["google-client-id"],
     clientSecret: KEYS["google-client-secret"],
-    callbackURL: "https://afternoon-coast-42067-029dd5299c30.herokuapp.com/callback/"
+    callbackURL: "http://localhost:3000/auth/google/callback"
     //todo: port==process.env.PORT? :
   },
   function(accessToken, refreshToken, profile, done) {
@@ -56,7 +56,7 @@ router.get('/auth/google',
 /*
   This callback is invoked after Google decides on the login results
 */
-router.get('/callback',
+router.get('/auth/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/error?code=401'
   }),
