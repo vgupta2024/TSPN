@@ -56,7 +56,7 @@ router.get('/auth/google',
 /*
   This callback is invoked after Google decides on the login results
 */
-router.get('/auth/google/callback',
+router.get('/callback',
   passport.authenticate('google', {
     failureRedirect: '/error?code=401'
   }),
